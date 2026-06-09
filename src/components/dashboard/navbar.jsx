@@ -56,7 +56,7 @@ export function Navbar() {
                 <Button
                     variant="ghost"
                     size="icon-sm"
-                    className="lg:hidden"
+                    className="md:hidden"
                     onClick={openMobile}
                     aria-label="Open menu"
                 >
@@ -66,7 +66,7 @@ export function Navbar() {
                 <Button
                     variant="ghost"
                     size="icon-sm"
-                    className="hidden lg:inline-flex"
+                    className="hidden md:inline-flex"
                     onClick={toggleCollapsed}
                     aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
                 >

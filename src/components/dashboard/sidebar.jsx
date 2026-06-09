@@ -13,6 +13,8 @@ import {
     LogOut,
     ChevronDown,
     ChevronRight,
+    PanelLeftClose,
+    PanelLeftOpen,
 } from "lucide-react";
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -20,7 +22,7 @@ import { useAuth } from "@/hooks/use-auth";
 
 function Sidebar() {
     const pathname = usePathname();
-    const { isCollapsed, closeMobile, isMobileOpen } = useSidebar();
+    const { isCollapsed, toggleCollapsed, closeMobile, isMobileOpen } = useSidebar();
     const { user, logout } = useAuth();
     const isMobile = useIsMobile();
 
@@ -38,7 +40,7 @@ function Sidebar() {
                 data-slot="sidebar"
                 data-state={isCollapsed ? "collapsed" : "expanded"}
                 className={cn(
-                    "fixed left-0 top-0 z-50 flex h-dvh flex-col border-r border-white/10 bg-brand transition-all duration-300 ease-in-out lg:static lg:z-auto",
+                    "fixed left-0 top-0 z-50 flex h-dvh flex-col border-r border-white/10 bg-brand transition-all duration-300 ease-in-out md:static md:z-auto",
                     isCollapsed ? "w-[70px]" : "w-[280px]",
                     isMobile
                         ? cn(
@@ -146,6 +148,29 @@ function Sidebar() {
                         </div>
                     ))}
                 </nav>
+
+                {/* Collapse Toggle (desktop only) */}
+                {!isMobile && (
+                    <div className="shrink-0 border-t border-white/10 p-3">
+                        <button
+                            onClick={toggleCollapsed}
+                            className={cn(
+                                "flex w-full items-center gap-3 rounded-lg px-2 py-2 text-sm text-white/60 transition-colors hover:bg-white/10 hover:text-white",
+                                isCollapsed && "justify-center"
+                            )}
+                            aria-label={isCollapsed ? "Expand sidebar" : "Collapse sidebar"}
+                        >
+                            {isCollapsed ? (
+                                <PanelLeftOpen className="size-5 shrink-0" />
+                            ) : (
+                                <>
+                                    <PanelLeftClose className="size-5 shrink-0" />
+                                    <span>Collapse</span>
+                                </>
+                            )}
+                        </button>
+                    </div>
+                )}
             </aside>
         </>
     );

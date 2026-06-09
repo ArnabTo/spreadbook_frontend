@@ -80,9 +80,9 @@ export default function DashboardPage() {
             </Card>
 
             {/* ===== 3. Metrics & Weather Row ===== */}
-            <div className="grid gap-4 lg:grid-cols-5">
+            <div className="grid gap-4 lg:grid-cols-4">
                 {/* Weather Card */}
-                <Card className="overflow-hidden border-0 bg-[#004080] text-white lg:col-span-2">
+                <Card className="overflow-hidden border-0 bg-[#004080] text-white lg:col-span-1">
                     <CardContent className="p-5">
                         <div className="flex items-start justify-between">
                             <div className="space-y-1">
@@ -105,7 +105,7 @@ export default function DashboardPage() {
                 </Card>
 
                 {/* Metric Cards Grid */}
-                <div className="grid grid-cols-2 gap-3 lg:col-span-3">
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-3 lg:col-span-3">
                     {[
                         { title: "Total Sales", value: "0.00 ر.س." },
                         { title: "Total Expences", value: "0.00 ر.س." },
@@ -114,7 +114,7 @@ export default function DashboardPage() {
                         { title: "Total Customer", value: "14" },
                     ].map((metric) => (
                         <Card key={metric.title} className="relative">
-                            <CardContent className="p-3.5">
+                            <CardContent className="p-3">
                                 <div className="flex items-center justify-between">
                                     <p className="text-[11px] font-semibold uppercase tracking-wider text-gray-500">
                                         {metric.title}
@@ -135,26 +135,26 @@ export default function DashboardPage() {
             </div>
 
             {/* ===== 4. Quick-Action Buttons ===== */}
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {/* Sales Button */}
-                <button className="group flex overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5">
-                    <div className="flex flex-1 items-center justify-center gap-3 bg-red-500 py-5 text-white transition-colors hover:bg-red-600">
+                <button className="group bg-card-red-light  flex justify-center items-center overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5">
+                    <div className="flex flex-1 flex-col items-center justify-center gap-3 py-5 text-white transition-colors">
                         <ClipboardList className="size-7" />
                         <span className="text-lg font-bold tracking-wide">Sales</span>
                     </div>
-                    <div className="flex w-[20%] items-center justify-center bg-red-600 text-white transition-colors hover:bg-red-700">
-                        <Plus className="size-7" />
+                    <div className="flex w-[20%] h-full items-center justify-center bg-card-red-dark text-white transition-colors">
+                        <Plus className="size-10" />
                     </div>
                 </button>
 
                 {/* Purchase Button */}
-                <button className="group flex overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5">
-                    <div className="flex flex-1 items-center justify-center gap-3 bg-blue-600 py-5 text-white transition-colors hover:bg-blue-700">
+                <button className="group bg-card-blue-light  flex justify-center items-center overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5">
+                    <div className="flex flex-1 flex-col items-center justify-center gap-3 py-5 text-white transition-colors">
                         <ShoppingCart className="size-7" />
-                        <span className="text-lg font-bold tracking-wide">Purchase</span>
+                        <span className="text-xl font-bold tracking-wide">Purchase</span>
                     </div>
-                    <div className="flex w-[20%] items-center justify-center bg-blue-700 text-white transition-colors hover:bg-blue-800">
-                        <Plus className="size-7" />
+                    <div className="flex w-[20%] h-full items-center justify-center bg-card-blue-dark text-white transition-colors">
+                        <Plus className="size-10" />
                     </div>
                 </button>
             </div>

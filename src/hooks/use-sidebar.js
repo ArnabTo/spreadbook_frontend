@@ -1,15 +1,31 @@
 "use client";
 
-import { createContext, useContext, useState, useCallback } from "react";
+import { createContext, useContext, useState, useCallback, useEffect, useRef } from "react";
+import { useBelowSidebarBreakpoint } from "@/hooks/use-media-query";
 
 const SidebarContext = createContext(null);
 
 export function SidebarProvider({ children }) {
+    const belowBreakpoint = useBelowSidebarBreakpoint();
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [isMobileOpen, setIsMobileOpen] = useState(false);
+    const userOverride = useRef(null);
+
+    useEffect(() => {
+        if (belowBreakpoint) {
+            setIsCollapsed(true);
+        } else if (userOverride.current !== null) {
+            setIsCollapsed(userOverride.current);
+            userOverride.current = null;
+        }
+    }, [belowBreakpoint]);
 
     const toggleCollapsed = useCallback(() => {
-        setIsCollapsed((prev) => !prev);
+        setIsCollapsed((prev) => {
+            const next = !prev;
+            userOverride.current = next;
+            return next;
+        });
     }, []);
 
     const setCollapsed = useCallback((value) => {

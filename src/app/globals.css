@@ -6,6 +6,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --breakpoint-sidebar: 1100px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: "Valera Round", system-ui, sans-serif;
@@ -46,6 +47,10 @@
   --color-navy: #0F1B2D;
   --color-navy-light: #1a2a3d;
   --color-brandGray: #3A4554;
+  --color-card-blue-light: #3452C7;
+  --color-card-blue-dark: #2F4AB3;
+  --color-card-red-light: #C73434;
+  --color-card-red-dark: #A52B2B;
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
