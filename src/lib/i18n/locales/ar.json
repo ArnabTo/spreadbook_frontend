@@ -1,0 +1,16 @@
+{
+  "signIn": {
+    "title": "تسجيل الدخول إلى ERP",
+    "subtitle": "أدخل تفاصيل تسجيل الدخول الخاصة بك أدناه.",
+    "emailLabel": "البريد الإلكتروني",
+    "emailPlaceholder": "sana@spread-books.com",
+    "passwordLabel": "كلمة المرور",
+    "forgotPassword": "نسيت كلمة المرور؟",
+    "rememberMe": "تذكرني",
+    "signInButton": "تسجيل الدخول",
+    "brandSubtext": "حل ERP متكامل",
+    "footer": "© 2021 سبريدبوكس، مدعوم من سبريد سوليوشنز",
+    "footerRights": "cont. est. & مؤسسة انتشار الحلول للمقاولات جميع الحقوق محفوظة.",
+    "footerContact": "الهاتف: +966 50 793 3093 | البريد الإلكتروني: Info@spread-book.com"
+  }
+}

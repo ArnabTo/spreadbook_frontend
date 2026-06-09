@@ -1,0 +1,16 @@
+{
+  "signIn": {
+    "title": "Log Into ERP",
+    "subtitle": "Enter your login details bellow.",
+    "emailLabel": "EMAIL ADDRESS",
+    "emailPlaceholder": "sana@spread-books.com",
+    "passwordLabel": "PASSWORD",
+    "forgotPassword": "Forgot your password?",
+    "rememberMe": "Remember me",
+    "signInButton": "SIGN IN",
+    "brandSubtext": "Complete ERP Solution",
+    "footer": "© 2021 spreadbooks, Powered by Spread Solutions",
+    "footerRights": "cont. est. & مؤسسة انتشار الحلول للمقاولات All Rights Reserved.",
+    "footerContact": "Phone : +966 50 793 3093 | Email : Info@spread-book.com"
+  }
+}
