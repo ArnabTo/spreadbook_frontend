@@ -27,6 +27,29 @@ export const categoriesKey = (params = {}) => {
   return qs ? `${endpoints.category}?${qs}` : endpoints.category;
 };
 
+// ── Measuring Unit API ──
+
+export const fetchUnits = (params = {}) =>
+  fetcher([endpoints.units, { params }]);
+
+export const createUnit = (data) =>
+  axiosInstance.post(endpoints.units, data).then((r) => r.data);
+
+export const updateUnit = (id, data) =>
+  axiosInstance.patch(`${endpoints.units}${id}/`, data).then((r) => r.data);
+
+export const deleteUnit = (id) =>
+  axiosInstance.delete(`${endpoints.units}${id}/`).then((r) => r.data);
+
+export const unitsKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.units}?${qs}` : endpoints.units;
+};
+
 // ── Product API ──
 
 export const fetchProducts = (params = {}) =>
@@ -43,6 +66,38 @@ export const updateProduct = (id, data) =>
 export const deleteProduct = (id) =>
   axiosInstance.delete(`${endpoints.products}${id}/`).then((r) => r.data);
 
+export const productsKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.products}?${qs}` : endpoints.products;
+};
+
+// ── Product Services API ──
+
+export const fetchProductServices = (params = {}) =>
+  fetcher([endpoints.productServices, { params }]);
+
+export const createProductService = (data) =>
+  axiosInstance.post(endpoints.productServices, data).then((r) => r.data);
+
+export const updateProductService = (id, data) =>
+  axiosInstance.patch(`${endpoints.productServices}${id}/`, data).then((r) => r.data);
+
+export const deleteProductService = (id) =>
+  axiosInstance.delete(`${endpoints.productServices}${id}/`).then((r) => r.data);
+
+export const productServicesKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.productServices}?${qs}` : endpoints.productServices;
+};
+
 // ── Dashboard API ──
 
 export const fetchDashboardSalesSummary = (params = {}) =>
@@ -56,9 +111,128 @@ export const fetchAccessibleBranches = () =>
 export const fetchCompanyStructure = (companyId) =>
   fetcher(endpoints.companyStructure(companyId));
 
+// ── Warehouse API ──
+
+export const fetchWarehouses = (params = {}) =>
+  fetcher([endpoints.warehouses, { params }]);
+
+export const createWarehouse = (data) =>
+  axiosInstance.post(endpoints.warehouses, data).then((r) => r.data);
+
+export const updateWarehouse = (id, data) =>
+  axiosInstance.patch(`${endpoints.warehouses}${id}/`, data).then((r) => r.data);
+
+export const deleteWarehouse = (id) =>
+  axiosInstance.delete(`${endpoints.warehouses}${id}/`).then((r) => r.data);
+
+export const warehousesKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.warehouses}?${qs}` : endpoints.warehouses;
+};
+
+// ── Country / State API ──
+
+export const fetchCountries = (params = {}) =>
+  fetcher([endpoints.countries, { params }]);
+
+export const fetchStates = (params = {}) =>
+  fetcher([endpoints.states, { params }]);
+
+// ── Supplier API ──
+
+export const fetchSuppliers = (params = {}) =>
+  fetcher([endpoints.suppliers, { params }]);
+
+export const createSupplier = (data) =>
+  axiosInstance.post(endpoints.suppliers, data).then((r) => r.data);
+
+export const updateSupplier = (id, data) =>
+  axiosInstance.patch(`${endpoints.suppliers}${id}/`, data).then((r) => r.data);
+
+export const deleteSupplier = (id) =>
+  axiosInstance.delete(`${endpoints.suppliers}${id}/`).then((r) => r.data);
+
+export const suppliersKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.suppliers}?${qs}` : endpoints.suppliers;
+};
+
 // ── Auth ──
 
 export const loginUser = (username, password) =>
   axiosInstance.post(endpoints.auth.login, { username, password }).then((r) => r.data);
 
 export const fetchProfile = () => fetcher(endpoints.auth.profile);
+
+// ── Account Groups API ──
+
+export const fetchAccountGroups = (params = {}) =>
+  fetcher([endpoints.accountGroups, { params }]);
+
+export const createAccountGroup = (data) =>
+  axiosInstance.post(endpoints.accountGroups, data).then((r) => r.data);
+
+export const updateAccountGroup = (id, data) =>
+  axiosInstance.patch(`${endpoints.accountGroups}${id}/`, data).then((r) => r.data);
+
+export const deleteAccountGroup = (id) =>
+  axiosInstance.delete(`${endpoints.accountGroups}${id}/`).then((r) => r.data);
+
+export const accountGroupsKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.accountGroups}?${qs}` : endpoints.accountGroups;
+};
+
+// ── Account Group Parents API ──
+
+export const fetchAccountGroupParents = (params = {}) =>
+  fetcher([endpoints.accountGroupParents, { params }]);
+
+export const accountGroupParentsKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.accountGroupParents}?${qs}` : endpoints.accountGroupParents;
+};
+
+// ── Account Group Seed API ──
+
+export const seedAccountGroupParents = () =>
+  axiosInstance.post(endpoints.accountGroupSeed).then((r) => r.data);
+
+// ── Financial Years API ──
+
+export const fetchFinancialYears = (params = {}) =>
+  fetcher([endpoints.financialYears, { params }]);
+
+export const createFinancialYear = (data) =>
+  axiosInstance.post(endpoints.financialYears, data).then((r) => r.data);
+
+export const updateFinancialYear = (id, data) =>
+  axiosInstance.patch(`${endpoints.financialYears}${id}/`, data).then((r) => r.data);
+
+export const deleteFinancialYear = (id) =>
+  axiosInstance.delete(`${endpoints.financialYears}${id}/`).then((r) => r.data);
+
+export const financialYearsKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.financialYears}?${qs}` : endpoints.financialYears;
+};

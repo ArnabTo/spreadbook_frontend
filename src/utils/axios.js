@@ -62,6 +62,8 @@ export const endpoints = {
   companies: "/api/companies/",
   branches: "/api/branches/",
   warehouses: "/api/warehouses/",
+  countries: "/api/countries/",
+  states: "/api/states/",
   accessibleBranches: "/api/user/accessible-branches/",
   companyStructure: (id) => `/api/companies/${id}/structure/`,
 
@@ -76,6 +78,17 @@ export const endpoints = {
   // Customers / Suppliers
   customers: "/api/customers/",
   suppliers: "/api/suppliers/",
+
+  // Product Services
+  productServices: "/api/product-services/",
+
+  // Account Groups
+  accountGroups: "/api/account-groups/",
+  accountGroupParents: "/api/account-group-parents/",
+  accountGroupSeed: "/api/account-groups/seed/",
+
+  // Financial Years
+  financialYears: "/api/financial-years/",
 
   // Orders
   orders: "/api/order/",
