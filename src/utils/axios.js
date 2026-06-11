@@ -83,12 +83,16 @@ export const endpoints = {
   productServices: "/api/product-services/",
 
   // Account Groups
+  accounts: "/api/accounts/",
   accountGroups: "/api/account-groups/",
   accountGroupParents: "/api/account-group-parents/",
   accountGroupSeed: "/api/account-groups/seed/",
 
   // Financial Years
   financialYears: "/api/financial-years/",
+
+  // Prefixes
+  prefixes: "/api/prefixes/",
 
   // Orders
   orders: "/api/order/",

@@ -165,6 +165,60 @@ export const suppliersKey = (params = {}) => {
   return qs ? `${endpoints.suppliers}?${qs}` : endpoints.suppliers;
 };
 
+// ── Customer API ──
+
+export const fetchCustomers = (params = {}) =>
+  fetcher([endpoints.customers, { params }]);
+
+export const createCustomer = (data) =>
+  axiosInstance.post(endpoints.customers, data).then((r) => r.data);
+
+export const updateCustomer = (id, data) =>
+  axiosInstance.patch(`${endpoints.customers}${id}/`, data).then((r) => r.data);
+
+export const deleteCustomer = (id) =>
+  axiosInstance.delete(`${endpoints.customers}${id}/`).then((r) => r.data);
+
+export const uploadCustomerAttachment = (id, formData) =>
+  axiosInstance.post(`${endpoints.customers}${id}/attachments/`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const deleteCustomerAttachment = (customerId, attachmentId) =>
+  axiosInstance.delete(`${endpoints.customers}${customerId}/attachments/${attachmentId}/`).then((r) => r.data);
+
+export const customersKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.customers}?${qs}` : endpoints.customers;
+};
+
+// ── Account API ──
+
+export const fetchAccounts = (params = {}) =>
+  fetcher([endpoints.accounts, { params }]);
+
+export const createAccount = (data) =>
+  axiosInstance.post(endpoints.accounts, data).then((r) => r.data);
+
+export const updateAccount = (id, data) =>
+  axiosInstance.patch(`${endpoints.accounts}${id}/`, data).then((r) => r.data);
+
+export const deleteAccount = (id) =>
+  axiosInstance.delete(`${endpoints.accounts}${id}/`).then((r) => r.data);
+
+export const accountsKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.accounts}?${qs}` : endpoints.accounts;
+};
+
 // ── Auth ──
 
 export const loginUser = (username, password) =>
@@ -235,4 +289,27 @@ export const financialYearsKey = (params = {}) => {
   });
   const qs = searchParams.toString();
   return qs ? `${endpoints.financialYears}?${qs}` : endpoints.financialYears;
+};
+
+// ── Prefix API ──
+
+export const fetchPrefixes = (params = {}) =>
+  fetcher([endpoints.prefixes, { params }]);
+
+export const createPrefix = (data) =>
+  axiosInstance.post(endpoints.prefixes, data).then((r) => r.data);
+
+export const updatePrefix = (id, data) =>
+  axiosInstance.patch(`${endpoints.prefixes}${id}/`, data).then((r) => r.data);
+
+export const deletePrefix = (id) =>
+  axiosInstance.delete(`${endpoints.prefixes}${id}/`).then((r) => r.data);
+
+export const prefixesKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.prefixes}?${qs}` : endpoints.prefixes;
 };
