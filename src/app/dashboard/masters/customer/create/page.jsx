@@ -113,10 +113,8 @@ export default function CustomerCreatePage() {
           arabic_zip_code: cust.arabic_zip_code || "",
         });
         setExistingAttachments(cust.attachments || []);
-      }
     }).catch(() => setError(t("customer.failed")))
       .finally(() => setLoadingData(false));
-  }, [editId, t]);
   }, [editId, t]);
 
   const translateToArabic = (field, englishValue) => {

@@ -313,3 +313,50 @@ export const prefixesKey = (params = {}) => {
   const qs = searchParams.toString();
   return qs ? `${endpoints.prefixes}?${qs}` : endpoints.prefixes;
 };
+
+// ── Sales Quotation API ──
+
+export const fetchSalesQuotations = (params = {}) =>
+  fetcher([endpoints.salesQuotations, { params }]);
+
+export const fetchSalesQuotation = (id) =>
+  fetcher(`${endpoints.salesQuotations}${id}/`);
+
+export const fetchSalesQuotationOptions = () =>
+  fetcher(endpoints.salesQuotationOptions);
+
+export const createSalesQuotation = (formData) =>
+  axiosInstance.post(endpoints.salesQuotations, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const updateSalesQuotation = (id, formData) =>
+  axiosInstance.patch(`${endpoints.salesQuotations}${id}/`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const deleteSalesQuotation = (id) =>
+  axiosInstance.delete(`${endpoints.salesQuotations}${id}/`).then((r) => r.data);
+
+export const salesQuotationsKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.salesQuotations}?${qs}` : endpoints.salesQuotations;
+};
+
+// Currency master
+export const fetchSalesQuotationCurrencies = (params = {}) =>
+  fetcher([endpoints.salesQuotationCurrencies, { params }]);
+
+export const createSalesQuotationCurrency = (data) =>
+  axiosInstance.post(endpoints.salesQuotationCurrencies, data).then((r) => r.data);
+
+export const updateSalesQuotationCurrency = (id, data) =>
+  axiosInstance.patch(`${endpoints.salesQuotationCurrencies}${id}/`, data).then((r) => r.data);
+
+export const deleteSalesQuotationCurrency = (id) =>
+  axiosInstance.delete(`${endpoints.salesQuotationCurrencies}${id}/`).then((r) => r.data);
+

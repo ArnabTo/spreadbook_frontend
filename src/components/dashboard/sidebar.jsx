@@ -72,17 +72,17 @@ function Sidebar() {
                 {/* Logo area */}
                 <div
                     className={cn(
-                        "flex h-16 shrink-0 items-center border-b border-white/10 px-4",
+                        "bg-white flex h-16 shrink-0 items-center px-4",
                         effectiveCollapsed ? "justify-center" : "gap-3"
                     )}
                 >
                     {effectiveCollapsed ? (
-                        <div className="flex size-9 items-center justify-center rounded-lg bg-white/20 text-sm font-bold text-white">
+                        <div className="bg-white flex size-9 items-center justify-center rounded-lg text-sm font-bold text-white">
                             S
                         </div>
                     ) : (
                         <>
-                            <div className="flex size-9 items-center justify-center rounded-lg bg-white/20 text-sm font-bold text-white">
+                            <div className="bg-white flex size-9 items-center justify-center rounded-lg text-sm font-bold text-white">
                                 S
                             </div>
                             <span className="text-base font-semibold text-white/90">
@@ -189,7 +189,7 @@ function SidebarUserCard({ user, logout, isCollapsed }) {
 
     if (isCollapsed) {
         return (
-            <div className="shrink-0 flex justify-center py-3">
+            <div className="bg-brand-dark shrink-0 flex justify-center py-3">
                 <Avatar
                     src={user?.avatar}
                     fallback={user?.name?.charAt(0) || "U"}
@@ -200,20 +200,22 @@ function SidebarUserCard({ user, logout, isCollapsed }) {
     }
 
     return (
-        <div className="shrink-0 bg-white px-4 py-3 relative">
+        <div className="min-w-4/5 mx-auto bg-brand-dark shrink-0 px-4 py-3 rounded-lg relative">
             <button
                 onClick={() => setMenuOpen((prev) => !prev)}
-                className="flex w-full items-center justify-center gap-3"
+                className="flex flex-col w-full items-center justify-center gap-3"
             >
                 <Avatar
                     src={user?.avatar}
                     fallback={user?.name?.charAt(0) || "U"}
                     size="sm"
                 />
-                <span className="text-sm font-semibold text-gray-800">
-                    {user?.name || "User"}
-                </span>
-                <ChevronDown className={cn("size-4 text-gray-500 transition-transform", menuOpen && "rotate-180")} />
+                <div className="flex w-full items-center justify-center gap-2">
+                    <span className="text-sm font-semibold text-white/90 truncate">
+                        {user?.name || "User"}
+                    </span>
+                    <ChevronDown className={cn("size-4 text-gray-500 transition-transform", menuOpen && "rotate-180")} />
+                </div>
             </button>
 
             {menuOpen && (

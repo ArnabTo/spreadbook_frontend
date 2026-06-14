@@ -81,6 +81,21 @@ export const getNavData = (userPermissions = []) => [
             },
         ],
     },
+    {
+        // subheader: "Management",
+        items: [
+            {
+                title: "Sales",
+                path: "/dashboard/sales",
+                icon: icon("shopping"),
+                children: [
+                    { title: "Sales Quotation", path: "/dashboard/sales/sales-quotation" },
+                    { title: "Sales Order", path: "/dashboard/sales/sales-order" },
+                    { title: "Delivery Note", path: "/dashboard/sales/delivery-note",},
+                ],
+            },
+        ],
+    },
 
 
 ];

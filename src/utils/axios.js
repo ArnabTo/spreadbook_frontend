@@ -97,6 +97,12 @@ export const endpoints = {
   // Orders
   orders: "/api/order/",
 
+  // Sales Quotation
+  salesQuotations: "/api/sales-quotations/",
+  salesQuotationOptions: "/api/sales-quotations/options/",
+  salesQuotationCurrencies: "/api/sales-quotations/currencies/",
+  salesQuotationBankAccounts: "/api/sales-quotations/bank-accounts/",
+
   // Dashboard
   dashboard: {
     salesSummary: "/api/pos/sales-summary/",
