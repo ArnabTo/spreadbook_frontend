@@ -111,6 +111,17 @@ export const endpoints = {
   deliveryNotes: "/api/delivery-notes/",
   deliveryNoteOptions: "/api/delivery-notes/options/",
 
+  // Sales Invoice
+  salesInvoices: "/api/sales-invoices/",
+  salesInvoiceOptions: "/api/sales-invoices/options/",
+  proformaInvoices: "/api/proforma-invoices/",
+  proformaInvoiceOptions: "/api/proforma-invoices/options/",
+  salesReturns: "/api/sales-returns/",
+  salesReturnOptions: "/api/sales-returns/options/",
+
+  // Settings
+  bankAccounts: "/api/bank-accounts/",
+
   // Dashboard
   dashboard: {
     salesSummary: "/api/pos/sales-summary/",

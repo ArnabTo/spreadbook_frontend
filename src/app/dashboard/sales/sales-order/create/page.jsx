@@ -183,6 +183,8 @@ export default function SalesOrderCreatePage() {
       }
       setVal(`products.${index}.unit`, newUnit);
       setVal(`products.${index}.rate`, newRate);
+      const taxRate = product.is_tax_applied ? (product.tax_rate || "0") : "0";
+      setVal(`products.${index}.tax_percent`, taxRate);
     },
     [products, setVal]
   );

@@ -205,7 +205,7 @@ export default function SalesQuotationListPage() {
           href="/dashboard/sales/sales-quotation/create"
           className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700"
         >
-          <Plus className="size-4" />+ {t("salesQuotation.actions.add")}
+          <Plus className="size-4" /> {t("salesQuotation.actions.add")}
         </Link>
         <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90" style={{ backgroundColor: "#808000" }}>
           <Printer className="size-4" />{t("salesQuotation.actions.printSelected")}

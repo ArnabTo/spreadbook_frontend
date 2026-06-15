@@ -187,6 +187,8 @@ export default function DeliveryNoteCreatePage() {
       }
       setVal(`products.${index}.unit`, newUnit);
       setVal(`products.${index}.rate`, newRate);
+      const taxRate = product.is_tax_applied ? (product.tax_rate || "0") : "0";
+      setVal(`products.${index}.tax_percent`, taxRate);
     },
     [products, setVal]
   );
@@ -572,6 +574,7 @@ export default function DeliveryNoteCreatePage() {
                   <th className="px-2 py-2 text-center">{t("deliveryNote.items.productTotal")}</th>
                   <th className="px-2 py-2 text-center">{t("deliveryNote.items.amount")}</th>
                   <th className="px-2 py-2 text-center">{t("deliveryNote.items.taxPercent")}</th>
+                  <th className="px-2 py-2 text-center">{t("deliveryNote.items.tax")}</th>
                   <th className="px-2 py-2 text-center">{t("deliveryNote.items.actions")}</th>
                 </tr>
               </thead>
@@ -643,6 +646,7 @@ export default function DeliveryNoteCreatePage() {
                           onChange={(e) => setVal(`products.${index}.tax_percent`, e.target.value)}
                         />
                       </td>
+                      <td className="px-2 py-2 text-right text-xs text-gray-700">{cr ? cr.taxAmount.toFixed(2) : "0.00"}</td>
                       <td className="px-2 py-2 text-center">
                         <button
                           type="button"

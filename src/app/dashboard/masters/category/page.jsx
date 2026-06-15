@@ -130,7 +130,7 @@ export default function CategoryPage() {
                     className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-green-700"
                 >
                     <Plus className="size-4" />
-                    + ADD
+                    ADD
                 </button>
             </div>
 

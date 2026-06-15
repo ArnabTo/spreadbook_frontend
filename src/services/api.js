@@ -139,8 +139,67 @@ export const warehousesKey = (params = {}) => {
 export const fetchCountries = (params = {}) =>
   fetcher([endpoints.countries, { params }]);
 
+export const createCountry = (data) =>
+  axiosInstance.post(endpoints.countries, data).then((r) => r.data);
+
+export const updateCountry = (id, data) =>
+  axiosInstance.patch(`${endpoints.countries}${id}/`, data).then((r) => r.data);
+
+export const deleteCountry = (id) =>
+  axiosInstance.delete(`${endpoints.countries}${id}/`).then((r) => r.data);
+
+export const countriesKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.countries}?${qs}` : endpoints.countries;
+};
+
 export const fetchStates = (params = {}) =>
   fetcher([endpoints.states, { params }]);
+
+export const createState = (data) =>
+  axiosInstance.post(endpoints.states, data).then((r) => r.data);
+
+export const updateState = (id, data) =>
+  axiosInstance.patch(`${endpoints.states}${id}/`, data).then((r) => r.data);
+
+export const deleteState = (id) =>
+  axiosInstance.delete(`${endpoints.states}${id}/`).then((r) => r.data);
+
+export const statesKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.states}?${qs}` : endpoints.states;
+};
+
+// ── Bank Account API ──
+
+export const fetchBankAccounts = (params = {}) =>
+  fetcher([endpoints.bankAccounts, { params }]);
+
+export const createBankAccount = (data) =>
+  axiosInstance.post(endpoints.bankAccounts, data).then((r) => r.data);
+
+export const updateBankAccount = (id, data) =>
+  axiosInstance.patch(`${endpoints.bankAccounts}${id}/`, data).then((r) => r.data);
+
+export const deleteBankAccount = (id) =>
+  axiosInstance.delete(`${endpoints.bankAccounts}${id}/`).then((r) => r.data);
+
+export const bankAccountsKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.bankAccounts}?${qs}` : endpoints.bankAccounts;
+};
 
 // ── Supplier API ──
 
@@ -415,6 +474,89 @@ export const deliveryNotesKey = (params = {}) => {
   });
   const qs = searchParams.toString();
   return qs ? `${endpoints.deliveryNotes}?${qs}` : endpoints.deliveryNotes;
+};
+
+// ── Sales Invoice API ──
+
+export const fetchSalesInvoices = (params = {}) =>
+  fetcher([endpoints.salesInvoices, { params }]);
+
+export const fetchSalesInvoice = (id) =>
+  fetcher(`${endpoints.salesInvoices}${id}/`);
+
+export const fetchSalesInvoiceOptions = () =>
+  fetcher(endpoints.salesInvoiceOptions);
+
+export const createSalesInvoice = (formData) =>
+  axiosInstance.post(endpoints.salesInvoices, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const updateSalesInvoice = (id, formData) =>
+  axiosInstance.patch(`${endpoints.salesInvoices}${id}/`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const deleteSalesInvoice = (id) =>
+  axiosInstance.delete(`${endpoints.salesInvoices}${id}/`).then((r) => r.data);
+
+export const salesInvoicesKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.salesInvoices}?${qs}` : endpoints.salesInvoices;
+};
+
+export const fetchProformaInvoiceOptions = () =>
+  fetcher(endpoints.proformaInvoiceOptions);
+
+export const createProformaInvoice = (formData) =>
+  axiosInstance.post(endpoints.proformaInvoices, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const updateProformaInvoice = (id, formData) =>
+  axiosInstance.patch(`${endpoints.proformaInvoices}${id}/`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const deleteProformaInvoice = (id) =>
+  axiosInstance.delete(`${endpoints.proformaInvoices}${id}/`).then((r) => r.data);
+
+export const proformaInvoicesKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.proformaInvoices}?${qs}` : endpoints.proformaInvoices;
+};
+
+export const fetchSalesReturnOptions = () =>
+  fetcher(endpoints.salesReturnOptions);
+
+export const createSalesReturn = (formData) =>
+  axiosInstance.post(endpoints.salesReturns, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const updateSalesReturn = (id, formData) =>
+  axiosInstance.patch(`${endpoints.salesReturns}${id}/`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const deleteSalesReturn = (id) =>
+  axiosInstance.delete(`${endpoints.salesReturns}${id}/`).then((r) => r.data);
+
+export const salesReturnsKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.salesReturns}?${qs}` : endpoints.salesReturns;
 };
 
 export const salesOrdersKey = (params = {}) => {

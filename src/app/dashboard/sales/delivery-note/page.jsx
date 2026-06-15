@@ -104,9 +104,9 @@ export default function DeliveryNoteListPage() {
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <Link href="/dashboard" className="hover:text-brand"><Home className="size-4" /></Link>
           <span>Home</span>
-          <span>//</span>
+          <span>{"//"}</span>
           <span>Delivery Note</span>
-          <span>//</span>
+          <span>{"//"}</span>
           <span className="font-medium text-gray-800">{t("deliveryNote.title")}</span>
         </div>
         <div className="flex items-center gap-2">
@@ -206,7 +206,7 @@ export default function DeliveryNoteListPage() {
           href="/dashboard/sales/delivery-note/create"
           className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700"
         >
-          <Plus className="size-4" />+ {t("deliveryNote.actions.add")}
+          <Plus className="size-4" /> {t("deliveryNote.actions.add")}
         </Link>
         <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90" style={{ backgroundColor: "#808000" }}>
           <Printer className="size-4" />{t("deliveryNote.actions.printSelected")}

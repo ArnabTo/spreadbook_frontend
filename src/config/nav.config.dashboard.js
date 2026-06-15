@@ -92,11 +92,29 @@ export const getNavData = (userPermissions = []) => [
                     { title: "Sales Quotation", path: "/dashboard/sales/sales-quotation" },
                     { title: "Sales Order", path: "/dashboard/sales/sales-order" },
                     { title: "Delivery Note", path: "/dashboard/sales/delivery-note",},
+                    { title: "Sales Invoice", path: "/dashboard/sales/sales-invoice",},
+                    { title: "Proforma Invoice", path: "/dashboard/sales/proforma-invoice",},
+                    { title: "Sales Return", path: "/dashboard/sales/sales-return",},
+
                 ],
             },
         ],
     },
-
+    {
+        items: [
+            {
+                title: "Settings",
+                path: "/dashboard/settings",
+                icon: icon("settings"),
+                children: [
+                    { title: "Country", path: "/dashboard/settings/country" },
+                    { title: "State/Province", path: "/dashboard/settings/state-province" },
+                    { title: "Bank Account", path: "/dashboard/settings/bank-account" },
+                    { title: "Currency", path: "/dashboard/settings/currency" },
+                ],
+            },
+        ],
+    },
 
 ];
 
