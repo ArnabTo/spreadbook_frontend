@@ -360,3 +360,69 @@ export const updateSalesQuotationCurrency = (id, data) =>
 export const deleteSalesQuotationCurrency = (id) =>
   axiosInstance.delete(`${endpoints.salesQuotationCurrencies}${id}/`).then((r) => r.data);
 
+// ── Sales Order API ──
+
+export const fetchSalesOrders = (params = {}) =>
+  fetcher([endpoints.salesOrders, { params }]);
+
+export const fetchSalesOrder = (id) =>
+  fetcher(`${endpoints.salesOrders}${id}/`);
+
+export const fetchSalesOrderOptions = () =>
+  fetcher(endpoints.salesOrderOptions);
+
+export const createSalesOrder = (formData) =>
+  axiosInstance.post(endpoints.salesOrders, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const updateSalesOrder = (id, formData) =>
+  axiosInstance.patch(`${endpoints.salesOrders}${id}/`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const deleteSalesOrder = (id) =>
+  axiosInstance.delete(`${endpoints.salesOrders}${id}/`).then((r) => r.data);
+
+// ── Delivery Note API ──
+
+export const fetchDeliveryNotes = (params = {}) =>
+  fetcher([endpoints.deliveryNotes, { params }]);
+
+export const fetchDeliveryNote = (id) =>
+  fetcher(`${endpoints.deliveryNotes}${id}/`);
+
+export const fetchDeliveryNoteOptions = () =>
+  fetcher(endpoints.deliveryNoteOptions);
+
+export const createDeliveryNote = (formData) =>
+  axiosInstance.post(endpoints.deliveryNotes, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const updateDeliveryNote = (id, formData) =>
+  axiosInstance.patch(`${endpoints.deliveryNotes}${id}/`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const deleteDeliveryNote = (id) =>
+  axiosInstance.delete(`${endpoints.deliveryNotes}${id}/`).then((r) => r.data);
+
+export const deliveryNotesKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.deliveryNotes}?${qs}` : endpoints.deliveryNotes;
+};
+
+export const salesOrdersKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.salesOrders}?${qs}` : endpoints.salesOrders;
+};
+
