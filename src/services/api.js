@@ -509,6 +509,30 @@ export const salesInvoicesKey = (params = {}) => {
   return qs ? `${endpoints.salesInvoices}?${qs}` : endpoints.salesInvoices;
 };
 
+// ── Sales Invoice Registry API ──
+
+export const fetchSalesInvoiceRegistries = (params = {}) =>
+  fetcher([endpoints.salesInvoiceRegistry, { params }]);
+
+export const exportSalesInvoiceRegistry = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  const url = qs ? `${endpoints.salesInvoiceRegistryExport}?${qs}` : endpoints.salesInvoiceRegistryExport;
+  return axiosInstance.get(url, { responseType: "blob" }).then((r) => r.data);
+};
+
+export const salesInvoiceRegistryKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.salesInvoiceRegistry}?${qs}` : endpoints.salesInvoiceRegistry;
+};
+
 export const fetchProformaInvoiceOptions = () =>
   fetcher(endpoints.proformaInvoiceOptions);
 

@@ -727,7 +727,7 @@
     "loading": "[AR] Loading...",
     "noData": "[AR] No proforma invoices found.",
     "failed": "[AR] Failed to load.",
-    "deleteConfirm": "[AR] Delete proforma invoice \"{name}\"?",
+    "deleteConfirm": "[AR] Delete  \"{name}\"?",
     "deleteFailed": "[AR] Failed to delete proforma invoice.",
     "validation": {
       "customerRequired": "[AR] Customer is required.",
@@ -872,6 +872,62 @@
       "printSelected": "[AR] Print Selected",
       "edit": "[AR] Edit",
       "delete": "[AR] Delete"
+    }
+  },
+  "salesInvoiceRegistry": {
+    "title": "[AR] Sales Invoice Registry",
+    "billNumber": "[AR] Bill Number",
+    "customer": "[AR] Customer",
+    "date": "[AR] Date",
+    "partyInvoiceNumber": "[AR] Party Invoice Number",
+    "product": "[AR] Product",
+    "unit": "[AR] Unit",
+    "quantity": "[AR] Quantity",
+    "mrp": "[AR] MRP",
+    "cost": "[AR] Cost",
+    "amount": "[AR] Amount",
+    "totalCost": "[AR] Total Cost",
+    "discountPercent": "[AR] Discount (%)",
+    "taxTotal": "[AR] Tax Total",
+    "totalAmount": "[AR] Total Amount",
+    "salesPerson": "[AR] Sales Person",
+    "selectSalesPerson": "[AR] ---Search By Sales Person---",
+    "loading": "[AR] Loading...",
+    "noData": "[AR] No sales invoice records found.",
+    "failed": "[AR] Failed to load.",
+    "filters": {
+      "billNumber": "[AR] Search By Bill Number",
+      "fromDate": "[AR] Search By From Date",
+      "toDate": "[AR] Search By To Date",
+      "customer": "[AR] ---Search By Customer---",
+      "product": "[AR] ---Search By Products---",
+      "salesPerson": "[AR] ---Search By Sales Person---",
+      "totalAmount": "[AR] Search By Total Amount",
+      "billwithouttax": "[AR] Bill without tax@15",
+      "search": "[AR] Search",
+      "clear": "[AR] Clear",
+      "exportExcel": "[AR] Export Excel",
+      "exportPdf": "[AR] Export PDF"
+    },
+    "table": {
+      "date": "[AR] DATE",
+      "billNumber": "[AR] BILL NUMBER",
+      "customer": "[AR] CUSTOMER",
+      "partyInvoiceNumber": "[AR] PARTY INVOICE NUMBER",
+      "product": "[AR] PRODUCT",
+      "unit": "[AR] UNIT",
+      "quantity": "[AR] QUANTITY",
+      "mrp": "[AR] MRP",
+      "cost": "[AR] COST",
+      "amount": "[AR] AMOUNT",
+      "totalCost": "[AR] TOTAL COST",
+      "discountPercent": "[AR] DISCOUNT (%)",
+      "taxTotal": "[AR] TAX TOTAL",
+      "totalAmount": "[AR] TOTAL AMOUNT"
+    },
+    "actions": {
+      "exportExcel": "[AR] Export Excel",
+      "exportPdf": "[AR] Export PDF"
     }
   }
 }

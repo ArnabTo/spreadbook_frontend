@@ -106,7 +106,7 @@ export default function ProformaInvoiceListPage() {
       <div className="flex items-center justify-between rounded-xl bg-white px-5 py-3 shadow-sm ring-1 ring-black/5">
         <div className="flex items-center gap-2 text-sm text-gray-500">
           <Link href="/dashboard" className="hover:text-brand"><Home className="size-4" /></Link>
-          <span>Home</span><span>{"//"}</span><span>Sales</span>
+          <span>Home</span><span>{"//"}</span><span>Sales</span>{"//"}
           <span className="font-medium text-gray-800">{t("proformaInvoice.title")}</span>
         </div>
         <div className="flex items-center gap-2">
@@ -181,7 +181,7 @@ export default function ProformaInvoiceListPage() {
                       <td className="px-3 py-3 text-right font-semibold text-gray-800">{formatNum(q.grand_total)}</td>
                       <td className="px-3 py-3 text-center">
                         <div className="flex items-center justify-center gap-1.5">
-                          <button onClick={() => handlePdf(q.id, "view")} className="flex size-7 items-center justify-center rounded bg-red-700 text-white hover:bg-red-800" title={t("proformaInvoice.actions.pdf")}><FileText className="size-3.5" /></button>
+                          <Link href={`/invoice/${q.id}`} target="_blank" className="flex size-7 items-center justify-center rounded bg-red-700 text-white hover:bg-red-800" title={t("proformaInvoice.actions.pdf")}><FileText className="size-3.5" /></Link>
                           <button onClick={() => handlePdf(q.id, "download")} className="flex size-7 items-center justify-center rounded bg-orange-600 text-white hover:bg-orange-700" title={t("proformaInvoice.actions.pdfDownload") || "Download"}><svg className="size-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></button>
                           <Link href={`/dashboard/sales/proforma-invoice/create?id=${q.id}`} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"><Pencil className="size-3.5" /></Link>
                           <button onClick={() => handleDelete(q)} className="flex size-7 items-center justify-center rounded bg-[#4a5b7a] text-white hover:bg-red-600"><Trash2 className="size-3.5" /></button>

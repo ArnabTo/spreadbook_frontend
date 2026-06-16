@@ -93,6 +93,8 @@ export const getNavData = (userPermissions = []) => [
                     { title: "Sales Order", path: "/dashboard/sales/sales-order" },
                     { title: "Delivery Note", path: "/dashboard/sales/delivery-note",},
                     { title: "Sales Invoice", path: "/dashboard/sales/sales-invoice",},
+                    { title: "Sales Invoice Registry", path: "/dashboard/sales/sales-invoice-registry",},
+                    { title: "Sales Order Registry", path: "/dashboard/sales/sales-order-registry",},
                     { title: "Proforma Invoice", path: "/dashboard/sales/proforma-invoice",},
                     { title: "Sales Return", path: "/dashboard/sales/sales-return",},
 

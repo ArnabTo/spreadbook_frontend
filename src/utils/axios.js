@@ -114,6 +114,8 @@ export const endpoints = {
   // Sales Invoice
   salesInvoices: "/api/sales-invoices/",
   salesInvoiceOptions: "/api/sales-invoices/options/",
+  salesInvoiceRegistry: "/api/sales-invoice-registry/",
+  salesInvoiceRegistryExport: "/api/sales-invoice-registry/export/",
   proformaInvoices: "/api/proforma-invoices/",
   proformaInvoiceOptions: "/api/proforma-invoices/options/",
   salesReturns: "/api/sales-returns/",
