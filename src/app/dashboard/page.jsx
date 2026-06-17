@@ -16,10 +16,19 @@ import {
     Wind,
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { useAuth } from "@/hooks/use-auth";
 
 const currentYear = new Date().getFullYear();
 
 export default function DashboardPage() {
+    const { user } = useAuth();
+    const company = user?.company;
+    const companyName = company?.name || "Your Company";
+    const companyPhone = company?.phone || "\u2014";
+    const companyEmail = company?.email || "\u2014";
+    const companyCrNumber = company?.crNumber || "\u2014";
+    const companyAddress = company?.address || "\u2014";
+    const companyLogo = company?.logo;
     return (
         <div className="flex flex-col gap-5">
             {/* ===== 1. Breadcrumb Bar ===== */}
@@ -52,28 +61,29 @@ export default function DashboardPage() {
                     <div className="flex flex-col items-center gap-1 text-center">
                         {/* Logo */}
                         <div className="mb-2 flex size-16 items-center justify-center rounded-full bg-brand/10">
-                            <svg viewBox="0 0 40 40" className="size-8" fill="none">
-                                <rect x="4" y="8" width="32" height="24" rx="3" stroke="#00477D" strokeWidth="2.5" />
-                                <path d="M10 16h20v3H10zM10 22h14v3H10z" fill="#00477D" opacity="0.15" />
-                                <text x="20" y="26" textAnchor="middle" fill="#00477D" fontSize="16" fontWeight="bold" fontFamily="sans-serif">S</text>
-                            </svg>
+                            {companyLogo ? (
+                                <img src={companyLogo} alt={companyName} className="size-12 rounded-full object-cover" />
+                            ) : (
+                                <svg viewBox="0 0 40 40" className="size-8" fill="none">
+                                    <rect x="4" y="8" width="32" height="24" rx="3" stroke="#00477D" strokeWidth="2.5" />
+                                    <path d="M10 16h20v3H10zM10 22h14v3H10z" fill="#00477D" opacity="0.15" />
+                                    <text x="20" y="26" textAnchor="middle" fill="#00477D" fontSize="16" fontWeight="bold" fontFamily="sans-serif">S</text>
+                                </svg>
+                            )}
                         </div>
                         <h1 className="text-xl font-bold uppercase tracking-wide text-gray-900">
-                            SANA ARABIA CONTRACTING COMPANY
+                            {companyName}
                         </h1>
-                        <p className="text-base font-bold text-gray-700">
-                            شركة سناء العربية للمقاولات
-                        </p>
                     </div>
 
                     <div className="mt-5 grid grid-cols-1 gap-4 border-t pt-4 sm:grid-cols-2">
                         <div className="space-y-1 text-sm">
-                            <p><span className="font-semibold text-gray-700">Phone :</span> <span className="text-gray-600">0545732691</span></p>
-                            <p><span className="font-semibold text-gray-700">Email :</span> <span className="text-gray-600">INFO@SANAARABIA.COM</span></p>
+                            <p><span className="font-semibold text-gray-700">Phone :</span> <span className="text-gray-600">{companyPhone}</span></p>
+                            <p><span className="font-semibold text-gray-700">Email :</span> <span className="text-gray-600">{companyEmail}</span></p>
                         </div>
                         <div className="space-y-1 text-sm sm:text-right">
-                            <p><span className="font-semibold text-gray-700">CR Number :</span> <span className="text-gray-600">1009150437</span></p>
-                            <p><span className="font-semibold text-gray-700">Address :</span> <span className="text-gray-600">MADRASA STREET P.O. BOX 30277, JUBAIL 31951 KINGDOM OF SAUDI ARABIA</span></p>
+                            <p><span className="font-semibold text-gray-700">CR Number :</span> <span className="text-gray-600">{companyCrNumber}</span></p>
+                            <p><span className="font-semibold text-gray-700">Address :</span> <span className="text-gray-600">{companyAddress}</span></p>
                         </div>
                     </div>
                 </CardContent>

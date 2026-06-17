@@ -106,6 +106,8 @@ export const endpoints = {
   // Sales Order
   salesOrders: "/api/sales-orders/",
   salesOrderOptions: "/api/sales-orders/options/",
+  salesOrderRegistry: "/api/sales-order-registry/",
+  salesOrderRegistryExport: "/api/sales-order-registry/export/",
 
   // Delivery Note
   deliveryNotes: "/api/delivery-notes/",

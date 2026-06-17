@@ -829,6 +829,37 @@
       "exportPdf": "Export PDF"
     }
   },
+  "salesOrderRegistry": {
+    "title": "Sales Order Registry",
+    "loading": "Loading...",
+    "noData": "No sales order records found.",
+    "failed": "Failed to load.",
+    "total": "Total :",
+    "filters": {
+      "billNumber": "Search By Bill Number",
+      "fromDate": "Search By From Date",
+      "toDate": "Search By To Date",
+      "customer": "---Search By Customer---",
+      "product": "---Search By Products---",
+      "totalAmount": "Search By Total Amount",
+      "search": "Search",
+      "clear": "Clear",
+      "exportExcel": "Export Excel",
+      "exportPdf": "Export PDF"
+    },
+    "table": {
+      "date": "DATE",
+      "billNumber": "BILL NUMBER",
+      "customer": "CUSTOMER",
+      "product": "PRODUCT",
+      "unit": "UNIT",
+      "quantity": "QUANTITY",
+      "mrp": "MRP",
+      "amount": "AMOUNT",
+      "taxTotal": "TAX TOTAL",
+      "totalAmount": "TOTAL AMOUNT"
+    }
+  },
   "salesReturn": {
     "title": "Sales Return",
     "createTitle": "Create Sales Return",

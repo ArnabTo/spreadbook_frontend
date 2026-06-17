@@ -69,8 +69,13 @@ export default function ProductCreatePage() {
     if (!editId) return;
     setLoadingData(true);
     fetchProducts({ id: editId }).then((data) => {
+      console.log("[ProductEdit] raw data:", data);
       const products = data?.results || data || [];
+      console.log("[ProductEdit] products:", products);
       const prod = Array.isArray(products) ? products[0] : products;
+      console.log("[ProductEdit] prod:", prod);
+      console.log("[ProductEdit] is_multiple_unit_enabled:", prod?.is_multiple_unit_enabled);
+      console.log("[ProductEdit] unit_prices_data:", prod?.unit_prices_data);
       if (prod) {
         setName(prod.name || "");
         setArabicName(prod.arabic_name || "");
@@ -91,17 +96,34 @@ export default function ProductCreatePage() {
         setRmElementUsed(prod.rm_element_used || "");
         setHsnCode(prod.hsn_code || "");
         setAvgQty(prod.avg_qty != null ? String(prod.avg_qty) : "");
-        if (prod.unit_prices_data && prod.unit_prices_data.length > 0) {
+        if (prod.product_units && prod.product_units.length > 0) {
+          console.log("[ProductEdit] Loading from product_units:", prod.product_units);
           setUnitPriceRows(
-            prod.unit_prices_data.map((up) => ({
-              key: up.id || crypto.randomUUID(),
-              measuring_unit: up.measuring_unit || "",
-              sales_price: up.sales_price != null ? String(up.sales_price) : "",
-              purchase_price: up.purchase_price != null ? String(up.purchase_price) : "",
+            prod.product_units.map((pu) => ({
+              key: "pu-" + pu.id,
+              measuring_unit: pu.unit,
+              sales_price: pu.price != null ? String(pu.price) : "",
+              purchase_price: prod.supplier_price != null ? String(prod.supplier_price) : "",
+              _conversion_to_base: pu.conversion_to_base != null ? String(pu.conversion_to_base) : "1.000000",
+              _is_default: pu.is_default || false,
+              _is_buying_unit: pu.is_buying_unit || false,
+              _is_selling_unit: pu.is_selling_unit !== false,
+              _is_default_selling: pu.is_default_selling || false,
             }))
           );
+        } else if (prod.is_multiple_unit_enabled && prod.unit) {
+          console.log("[ProductEdit] Fallback: creating unit price row from primary unit:", prod.unit);
+          setUnitPriceRows([{
+            key: "primary-" + prod.unit,
+            measuring_unit: prod.unit,
+            sales_price: prod.price != null ? String(prod.price) : "",
+            purchase_price: prod.supplier_price != null ? String(prod.supplier_price) : "",
+          }]);
+        } else {
+          console.log("[ProductEdit] No product units and no fallback applicable");
         }
         if (prod.image) setImagePreview(prod.image);
+        console.log("[ProductEdit] State set complete. isMultipleUnitEnabled should be:", prod.is_multiple_unit_enabled);
       }
     }).catch(() => setError("Failed to load product."))
       .finally(() => setLoadingData(false));
@@ -202,12 +224,16 @@ export default function ProductCreatePage() {
       formData.append("avg_qty", avgQty || "0");
 
       if (isMultipleUnitEnabled && unitPriceRows.length > 0) {
-        const unitPrices = unitPriceRows.map((r) => ({
-          measuring_unit: r.measuring_unit,
-          sales_price: Number(r.sales_price) || 0,
-          purchase_price: Number(r.purchase_price) || 0,
+        const productUnits = unitPriceRows.map((r, i) => ({
+          unit: r.measuring_unit,
+          conversion_to_base: r._conversion_to_base || "1.000000",
+          price: r.sales_price || "0",
+          is_default: r._is_default !== undefined ? r._is_default : (i === 0),
+          is_buying_unit: r._is_buying_unit !== undefined ? r._is_buying_unit : (i === 0),
+          is_selling_unit: r._is_selling_unit !== undefined ? r._is_selling_unit : true,
+          is_default_selling: r._is_default_selling !== undefined ? r._is_default_selling : (i === 0),
         }));
-        formData.append("unit_prices", JSON.stringify(unitPrices));
+        formData.append("product_units", JSON.stringify(productUnits));
       }
 
       if (isEdit) {

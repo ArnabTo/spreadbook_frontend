@@ -27,6 +27,7 @@ function mapBackendUser(backendUser) {
         avatar: backendUser.avatarUrl,
         role: backendUser.role,
         companyId: backendUser.companyId,
+        company: backendUser.company || null,
         resellerId: backendUser.resellerId,
         branchAccess: backendUser.branchAccess || [],
         status: backendUser.status,

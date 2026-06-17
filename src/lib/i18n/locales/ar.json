@@ -929,5 +929,36 @@
       "exportExcel": "[AR] Export Excel",
       "exportPdf": "[AR] Export PDF"
     }
+  },
+  "salesOrderRegistry": {
+    "title": "[AR] Sales Order Registry",
+    "loading": "[AR] Loading...",
+    "noData": "[AR] No sales order records found.",
+    "failed": "[AR] Failed to load.",
+    "total": "[AR] Total :",
+    "filters": {
+      "billNumber": "[AR] Search By Bill Number",
+      "fromDate": "[AR] Search By From Date",
+      "toDate": "[AR] Search By To Date",
+      "customer": "[AR] ---Search By Customer---",
+      "product": "[AR] ---Search By Products---",
+      "totalAmount": "[AR] Search By Total Amount",
+      "search": "[AR] Search",
+      "clear": "[AR] Clear",
+      "exportExcel": "[AR] Export Excel",
+      "exportPdf": "[AR] Export PDF"
+    },
+    "table": {
+      "date": "[AR] DATE",
+      "billNumber": "[AR] BILL NUMBER",
+      "customer": "[AR] CUSTOMER",
+      "product": "[AR] PRODUCT",
+      "unit": "[AR] UNIT",
+      "quantity": "[AR] QUANTITY",
+      "mrp": "[AR] MRP",
+      "amount": "[AR] AMOUNT",
+      "taxTotal": "[AR] TAX TOTAL",
+      "totalAmount": "[AR] TOTAL AMOUNT"
+    }
   }
 }
