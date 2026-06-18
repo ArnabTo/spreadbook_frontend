@@ -14,6 +14,7 @@ import {
   Upload,
 } from "lucide-react";
 import { swrFetcher, unitsKey, productsKey, categoriesKey, createProduct, updateProduct, fetchUnits, fetchProducts } from "@/services/api";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 export default function ProductCreatePage() {
   const router = useRouter();
@@ -544,6 +545,7 @@ export default function ProductCreatePage() {
         >
           Cancel
         </Link>
+        <CreatePermission module="product">
         <button
           onClick={handleSave}
           disabled={saving}
@@ -551,6 +553,7 @@ export default function ProductCreatePage() {
         >
           {saving ? "Saving..." : isEdit ? "Update" : "Save"}
         </button>
+        </CreatePermission>
       </div>
     </div>
   );

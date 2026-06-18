@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { swrFetcher, accountGroupsKey, deleteAccountGroup } from "@/services/api";
 import { useTranslation } from "react-i18next";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const currentYear = new Date().getFullYear();
 
@@ -56,9 +57,11 @@ export default function AccountGroupPage() {
       </div>
 
       <div className="flex justify-end">
+        <CreatePermission module="account_group">
         <Link href="/dashboard/masters/account-group/create" className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700">
           <Plus className="size-4" />ADD
         </Link>
+        </CreatePermission>
       </div>
 
       <div className="overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5">
@@ -93,8 +96,12 @@ export default function AccountGroupPage() {
                     <td className="px-3 py-3 text-center text-gray-600">{grp.parent_name || "—"}</td>
                     <td className="px-3 py-3 text-center">
                       <div className="flex items-center justify-center gap-2">
+                        <UpdatePermission module="account_group">
                         <Link href={`/dashboard/masters/account-group/create?id=${grp.id}`} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"><Pencil className="size-3.5" /></Link>
+                        </UpdatePermission>
+                        <DeletePermission module="account_group">
                         <button onClick={() => handleDelete(grp)} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-red-600"><Trash2 className="size-3.5" /></button>
+                        </DeletePermission>
                       </div>
                     </td>
                   </tr>

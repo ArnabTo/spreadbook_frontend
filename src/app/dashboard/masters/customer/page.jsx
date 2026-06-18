@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { swrFetcher, customersKey, deleteCustomer } from "@/services/api";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const currentYear = new Date().getFullYear();
 
@@ -56,9 +57,11 @@ export default function CustomerPage() {
       </div>
 
       <div className="flex justify-end">
+        <CreatePermission module="customer">
         <Link href="/dashboard/masters/customer/create" className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700">
           <Plus className="size-4" /> ADD
         </Link>
+        </CreatePermission>
       </div>
 
       <div className="overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5">
@@ -99,8 +102,12 @@ export default function CustomerPage() {
                     <td className="px-3 py-3 text-center">{cust.status === "Active" ? <span className="text-xs font-medium text-green-700">Active</span> : <span className="text-xs font-medium text-red-500">{cust.status || "—"}</span>}</td>
                     <td className="px-3 py-3 text-center">
                       <div className="flex items-center justify-center gap-2">
+                        <UpdatePermission module="customer">
                         <Link href={`/dashboard/masters/customer/create?id=${cust.id}`} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"><Pencil className="size-3.5" /></Link>
+                        </UpdatePermission>
+                        <DeletePermission module="customer">
                         <button onClick={() => handleDelete(cust)} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-red-600"><Trash2 className="size-3.5" /></button>
+                        </DeletePermission>
                       </div>
                     </td>
                   </tr>

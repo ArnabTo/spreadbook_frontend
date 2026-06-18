@@ -874,6 +874,64 @@
       "delete": "[AR] Delete"
     }
   },
+  "permission": {
+    "title": "الصلاحيات",
+    "pageTitle": "إدارة الصلاحيات",
+    "module": "الوحدة",
+    "role": "الدور",
+    "actions": "الإجراءات",
+    "view": "عرض",
+    "create": "إنشاء",
+    "update": "تحديث",
+    "delete": "حذف",
+    "save": "حفظ الصلاحيات",
+    "saved": "تم حفظ الصلاحيات بنجاح.",
+    "noPermission": "ليس لديك صلاحية لإدارة الصلاحيات.",
+    "roles": {
+      "super_admin": "مدير عام",
+      "admin": "مدير النظام",
+      "manager": "مدير",
+      "sales": "مبيعات",
+      "accounts": "حسابات",
+      "inventory": "مخزون",
+      "viewer": "مشاهد",
+      "accountant": "محاسب"
+    },
+    "modules": {
+      "dashboard": "لوحة التحكم",
+      "product": "المنتج",
+      "customer": "العميل",
+      "supplier": "المورد",
+      "warehouse": "المستودع",
+      "sales_quotation": "عرض السعر",
+      "sales_order": "أمر البيع",
+      "delivery_note": "إذن التسليم",
+      "sales_invoice": "فاتورة البيع",
+      "sales_return": "مرتجع البيع",
+      "account": "الحساب",
+      "account_group": "مجموعة الحسابات",
+      "financial_year": "السنة المالية",
+      "user": "المستخدم",
+      "role": "الدور",
+      "permission": "الصلاحية",
+      "settings": "الإعدادات",
+      "category": "الفئة",
+      "measuring_unit": "وحدة القياس",
+      "product_service": "الخدمة والمنتج",
+      "prefix": "البادئة",
+      "sales_invoice_registry": "سجل فاتورة البيع",
+      "sales_order_registry": "سجل أمر البيع",
+      "proforma_invoice": "الفاتورة الأولية"
+    },
+    "accessDenied": {
+      "title": "تم رفض الوصول",
+      "description": "ليس لديك صلاحية الوصول إلى هذه الصفحة. يرجى الاتصال بالمسؤول إذا كنت بحاجة إلى الوصول.",
+      "goBack": "العودة",
+      "goDashboard": "لوحة التحكم"
+    }
+  }
+}
+  },
   "salesInvoiceRegistry": {
     "title": "[AR] Sales Invoice Registry",
     "billNumber": "[AR] Bill Number",

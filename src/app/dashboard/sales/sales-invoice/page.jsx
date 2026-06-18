@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import {
   swrFetcher, salesInvoicesKey, deleteSalesInvoice, fetchSalesInvoiceOptions,
 } from "@/services/api";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const currentYear = new Date().getFullYear();
 
@@ -161,9 +162,11 @@ export default function SalesInvoiceListPage() {
       </div>
 
       <div className="flex justify-end gap-2">
-        <Link href="/dashboard/sales/sales-invoice/create" className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700">
-          <Plus className="size-4" /> {t("salesInvoice.actions.add")}
-        </Link>
+        <CreatePermission module="sales_invoice">
+          <Link href="/dashboard/sales/sales-invoice/create" className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700">
+            <Plus className="size-4" /> {t("salesInvoice.actions.add")}
+          </Link>
+        </CreatePermission>
         <button className="flex items-center gap-2 rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800">
           <Download className="size-4" />{t("salesInvoice.actions.import")}
         </button>
@@ -219,8 +222,12 @@ export default function SalesInvoiceListPage() {
                       </td>
                       <td className="px-3 py-3 text-center">
                         <div className="flex items-center justify-center gap-1.5">
-                          <Link href={`/dashboard/sales/sales-invoice/create?id=${q.id}`} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"><Pencil className="size-3.5" /></Link>
-                          <button onClick={() => handleDelete(q)} className="flex size-7 items-center justify-center rounded bg-[#4a5b7a] text-white hover:bg-red-600"><Trash2 className="size-3.5" /></button>
+                          <UpdatePermission module="sales_invoice">
+                            <Link href={`/dashboard/sales/sales-invoice/create?id=${q.id}`} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"><Pencil className="size-3.5" /></Link>
+                          </UpdatePermission>
+                          <DeletePermission module="sales_invoice">
+                            <button onClick={() => handleDelete(q)} className="flex size-7 items-center justify-center rounded bg-[#4a5b7a] text-white hover:bg-red-600"><Trash2 className="size-3.5" /></button>
+                          </DeletePermission>
                         </div>
                       </td>
                     </tr>

@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { SidebarProvider, useSidebar } from "@/hooks/use-sidebar";
 import { useAuth } from "@/hooks/use-auth";
 import { useIsMobile } from "@/hooks/use-media-query";
+import { PermissionProvider } from "@/store/permission-store";
+import { RoutePermissionGuard } from "@/components/permission/route-permission-guard";
 import { Navbar } from "@/components/dashboard/navbar";
 import { Sidebar } from "@/components/dashboard/sidebar";
 
@@ -37,7 +39,9 @@ function DashboardLayoutInner({ children }) {
             <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
                 <Navbar />
                 <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
-                    {children}
+                    <RoutePermissionGuard>
+                        {children}
+                    </RoutePermissionGuard>
                 </main>
             </div>
         </div>
@@ -47,7 +51,9 @@ function DashboardLayoutInner({ children }) {
 export function DashboardLayout({ children }) {
     return (
         <SidebarProvider>
-            <DashboardLayoutInner>{children}</DashboardLayoutInner>
+            <PermissionProvider>
+                <DashboardLayoutInner>{children}</DashboardLayoutInner>
+            </PermissionProvider>
         </SidebarProvider>
     );
 }

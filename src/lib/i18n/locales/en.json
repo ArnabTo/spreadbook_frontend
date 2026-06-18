@@ -906,7 +906,6 @@
     "paidAmount": "Paid Amount",
     "productDiscountTotal": "Product Discount Total",
     "grandTotal": "Grand Total",
-    "tax": "Tax",
     "pendingAmount": "Pending Amount",
     "cashDiscountTotal": "Cash Discount Total",
     "attachFile": "Attach File",
@@ -961,5 +960,63 @@
       "edit": "Edit",
       "delete": "Delete"
     }
+  },
+  "permission": {
+    "title": "Permissions",
+    "pageTitle": "Permissions Management",
+    "module": "Module",
+    "role": "Role",
+    "actions": "Actions",
+    "view": "View",
+    "create": "Create",
+    "update": "Update",
+    "delete": "Delete",
+    "save": "Save Permissions",
+    "saved": "Permissions saved successfully.",
+    "noPermission": "You do not have permission to manage permissions.",
+    "roles": {
+      "super_admin": "Super Admin",
+      "admin": "Admin",
+      "manager": "Manager",
+      "sales": "Sales",
+      "accounts": "Accounts",
+      "inventory": "Inventory",
+      "viewer": "Viewer",
+      "accountant": "Accountant"
+    },
+    "modules": {
+      "dashboard": "Dashboard",
+      "product": "Product",
+      "customer": "Customer",
+      "supplier": "Supplier",
+      "warehouse": "Warehouse",
+      "sales_quotation": "Sales Quotation",
+      "sales_order": "Sales Order",
+      "delivery_note": "Delivery Note",
+      "sales_invoice": "Sales Invoice",
+      "sales_return": "Sales Return",
+      "account": "Account",
+      "account_group": "Account Group",
+      "financial_year": "Financial Year",
+      "user": "User",
+      "role": "Role",
+      "permission": "Permission",
+      "settings": "Settings",
+      "category": "Category",
+      "measuring_unit": "Measuring Unit",
+      "product_service": "Product Service",
+      "prefix": "Prefix",
+      "sales_invoice_registry": "Sales Invoice Registry",
+      "sales_order_registry": "Sales Order Registry",
+      "proforma_invoice": "Proforma Invoice"
+    },
+    "accessDenied": {
+      "title": "Access Denied",
+      "description": "You do not have permission to access this resource. Please contact your administrator if you need access.",
+      "goBack": "Go Back",
+      "goDashboard": "Go Dashboard"
+    }
+  }
+}
   }
 }

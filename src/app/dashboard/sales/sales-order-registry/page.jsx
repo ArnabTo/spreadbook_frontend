@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 import {
   swrFetcher, salesOrderRegistryKey, exportSalesOrderRegistry,
 } from "@/services/api";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 import { API_BASE_URL } from "@/config/api";
 
 const currentYear = new Date().getFullYear();

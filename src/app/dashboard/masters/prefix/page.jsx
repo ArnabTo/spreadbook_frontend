@@ -24,6 +24,7 @@ import {
   fetchFinancialYears,
 } from "@/services/api";
 import { PrefixDialog } from "@/components/masters/prefix-dialog";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const currentYear = new Date().getFullYear();
 
@@ -171,12 +172,14 @@ export default function PrefixPage() {
 
       {/* Add Button */}
       <div className="flex justify-end">
+        <CreatePermission module="prefix">
         <button
           onClick={openAdd}
           className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-green-700"
         >
           <Plus className="size-4" />ADD
         </button>
+        </CreatePermission>
       </div>
 
       {/* Main Table Container */}
@@ -325,18 +328,22 @@ export default function PrefixPage() {
                     </td>
                     <td className="px-3 py-3 text-center">
                       <div className="flex items-center justify-center gap-2">
+                        <UpdatePermission module="prefix">
                         <button
                           onClick={() => openEdit(prefix)}
                           className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"
                         >
                           <Pencil className="size-3.5" />
                         </button>
+                        </UpdatePermission>
+                        <DeletePermission module="prefix">
                         <button
                           onClick={() => handleDelete(prefix)}
                           className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-red-600"
                         >
                           <Trash2 className="size-3.5" />
                         </button>
+                        </DeletePermission>
                       </div>
                     </td>
                   </tr>

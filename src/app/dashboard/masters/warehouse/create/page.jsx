@@ -9,6 +9,7 @@ import {
   swrFetcher,
   fetchWarehouses, createWarehouse, updateWarehouse,
 } from "@/services/api";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const arabicLabels = {
   country: "arabic_country",
@@ -281,9 +282,11 @@ export default function WarehouseCreatePage() {
         </div>
 
         <div className="flex justify-center gap-4 border-t px-6 py-4">
+          <CreatePermission module="warehouse">
           <button onClick={handleSave} disabled={saving} className="flex items-center gap-2 rounded-lg bg-green-600 px-6 py-2 text-sm font-semibold text-white hover:bg-green-700 disabled:opacity-60">
             {saving ? "Saving..." : "Save"}
           </button>
+          </CreatePermission>
           <Link href="/dashboard/masters/warehouse" className="flex items-center gap-2 rounded-lg bg-red-500 px-6 py-2 text-sm font-semibold text-white hover:bg-red-600">
             Clear
           </Link>

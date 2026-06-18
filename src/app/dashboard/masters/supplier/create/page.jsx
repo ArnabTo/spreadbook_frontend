@@ -6,6 +6,7 @@ import Link from "next/link";
 import useSWR from "swr";
 import { Home, ChevronRight, ChevronDown, ArrowUp } from "lucide-react";
 import { swrFetcher, fetchSuppliers, createSupplier, updateSupplier } from "@/services/api";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 export default function SupplierCreatePage() {
   const router = useRouter();
@@ -225,9 +226,11 @@ export default function SupplierCreatePage() {
 
         <div className="flex justify-end gap-4 border-t px-6 py-4">
           <Link href="/dashboard/masters/supplier" className="rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100">Cancel</Link>
+          <CreatePermission module="supplier">
           <button onClick={handleSave} disabled={saving} className="rounded-lg bg-[#004080] px-6 py-2 text-sm font-semibold text-white hover:bg-[#003060] disabled:opacity-60">
             {saving ? "Saving..." : isEdit ? "Update" : "Save"}
           </button>
+          </CreatePermission>
         </div>
       </div>
       <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="fixed bottom-6 right-6 flex size-10 items-center justify-center rounded-lg bg-[#004080] text-white shadow-lg hover:bg-[#003060]"><ArrowUp className="size-5" /></button>

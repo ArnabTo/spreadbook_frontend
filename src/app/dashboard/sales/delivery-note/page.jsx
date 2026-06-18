@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import {
   swrFetcher, deliveryNotesKey, deleteDeliveryNote, fetchDeliveryNoteOptions,
 } from "@/services/api";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const currentYear = new Date().getFullYear();
 
@@ -202,12 +203,14 @@ export default function DeliveryNoteListPage() {
       </div>
 
       <div className="flex justify-end gap-2">
-        <Link
-          href="/dashboard/sales/delivery-note/create"
-          className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700"
-        >
-          <Plus className="size-4" /> {t("deliveryNote.actions.add")}
-        </Link>
+        <CreatePermission module="delivery_note">
+          <Link
+            href="/dashboard/sales/delivery-note/create"
+            className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700"
+          >
+            <Plus className="size-4" /> {t("deliveryNote.actions.add")}
+          </Link>
+        </CreatePermission>
         <button className="flex items-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold text-white hover:opacity-90" style={{ backgroundColor: "#808000" }}>
           <Printer className="size-4" />{t("deliveryNote.actions.printSelected")}
         </button>
@@ -257,24 +260,32 @@ export default function DeliveryNoteListPage() {
                       <td className="px-3 py-3 text-right font-semibold text-gray-800">{formatNum(q.grand_total)}</td>
                       <td className="px-3 py-3 text-center">
                         <div className="flex items-center justify-center gap-1.5">
-                          <Link href={`/dashboard/sales/delivery-note/create?id=${q.id}`} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800" title={t("deliveryNote.actions.edit")}>
-                            <Pencil className="size-3.5" />
-                          </Link>
-                          <button onClick={() => handleDelete(q)} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-red-600" title={t("deliveryNote.actions.delete")}>
-                            <Trash2 className="size-3.5" />
-                          </button>
+                          <UpdatePermission module="delivery_note">
+                            <Link href={`/dashboard/sales/delivery-note/create?id=${q.id}`} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800" title={t("deliveryNote.actions.edit")}>
+                              <Pencil className="size-3.5" />
+                            </Link>
+                          </UpdatePermission>
+                          <DeletePermission module="delivery_note">
+                            <button onClick={() => handleDelete(q)} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-red-600" title={t("deliveryNote.actions.delete")}>
+                              <Trash2 className="size-3.5" />
+                            </button>
+                          </DeletePermission>
                           <button className="flex size-7 items-center justify-center rounded bg-blue-600 text-white hover:bg-blue-700" title={t("deliveryNote.actions.print")}>
                             <Printer className="size-3.5" />
                           </button>
-                          <button className="flex size-7 items-center justify-center rounded bg-blue-500 text-white hover:bg-blue-600" title={t("deliveryNote.actions.duplicate")}>
-                            <Copy className="size-3.5" />
-                          </button>
+                          <UpdatePermission module="delivery_note">
+                            <button className="flex size-7 items-center justify-center rounded bg-blue-500 text-white hover:bg-blue-600" title={t("deliveryNote.actions.duplicate")}>
+                              <Copy className="size-3.5" />
+                            </button>
+                          </UpdatePermission>
                           <button className="flex size-7 items-center justify-center rounded bg-blue-400 text-white hover:bg-blue-500" title={t("deliveryNote.actions.print")}>
                             <Printer className="size-3.5" />
                           </button>
-                          <button className="flex size-7 items-center justify-center rounded bg-red-500 text-white hover:bg-red-600" title={t("deliveryNote.actions.send")}>
-                            <Send className="size-3.5" />
-                          </button>
+                          <UpdatePermission module="delivery_note">
+                            <button className="flex size-7 items-center justify-center rounded bg-red-500 text-white hover:bg-red-600" title={t("deliveryNote.actions.send")}>
+                              <Send className="size-3.5" />
+                            </button>
+                          </UpdatePermission>
                         </div>
                       </td>
                     </tr>

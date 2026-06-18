@@ -21,6 +21,7 @@ import {
   ArrowUp,
 } from "lucide-react";
 import { swrFetcher, productsKey, fetchProducts, deleteProduct } from "@/services/api";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const currentYear = new Date().getFullYear();
 
@@ -196,12 +197,14 @@ export default function ProductPage() {
 
       {/* + ADD & Import Buttons */}
       <div className="flex justify-end gap-2">
+        <CreatePermission module="product">
         <Link
           href="/dashboard/masters/product/create"
           className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-green-700"
         >
           <Plus className="size-4" />ADD
         </Link>
+        </CreatePermission>
         <button className="flex items-center gap-2 rounded-lg bg-[#004080] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#003060]">
           Import <ChevronDown className="size-3.5" />
         </button>
@@ -271,18 +274,22 @@ export default function ProductPage() {
                     </td>
                     <td className="px-3 py-3 text-center">
                       <div className="flex items-center justify-center gap-2">
+                        <UpdatePermission module="product">
                         <Link
                           href={`/dashboard/masters/product/create?id=${prod.id}`}
                           className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"
                         >
                           <Pencil className="size-3.5" />
                         </Link>
+                        </UpdatePermission>
+                        <DeletePermission module="product">
                         <button
                           onClick={() => handleDelete(prod)}
                           className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-red-600"
                         >
                           <Trash2 className="size-3.5" />
                         </button>
+                        </DeletePermission>
                         <button className="flex size-7 items-center justify-center rounded bg-blue-600 text-white hover:bg-blue-700">
                           <Printer className="size-3.5" />
                         </button>

@@ -5,13 +5,14 @@ import { Logo } from "@/components/ui/logo";
 
 import SpreadBookLogo from "../../../public/assets/logo/spreadbook_logo.jpg";
 
-export function SignInLeftPanel() {
+export function SignInLeftPanel({ universalLogo }) {
     const { t } = useTranslation();
+    const logoSrc = universalLogo || SpreadBookLogo;
 
     return (
         <div className="flex h-full w-full flex-col items-center justify-between bg-brandGray py-16 px-8 text-white">
             <div className="flex flex-1 flex-col items-center justify-center gap-5">
-                <Logo src={SpreadBookLogo} alt="Spread Book" width={200} height={100} className="rounded-lg overflow-hidden"/>
+                <Logo src={logoSrc} alt="Spread Book" width={200} height={100} className="rounded-lg overflow-hidden"/>
                 <p className="text-md font-medium tracking-wide">
                     {t("signIn.brandSubtext")}
                 </p>

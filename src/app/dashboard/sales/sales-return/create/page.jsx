@@ -13,6 +13,7 @@ import {
   fetchSalesReturnOptions,
 } from "@/services/api";
 import axiosInstance from "@/utils/axios";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const EMPTY_ROW = () => ({
   product: "", unit: "", qty: "0", rate: "0", discount_amount: "0", tax_percent: "0",
@@ -484,7 +485,9 @@ export default function SalesReturnCreatePage() {
         </div>
 
         <div className="flex items-center justify-center gap-4 border-t px-6 py-4">
+          <CreatePermission module="sales_return">
           <button type="button" onClick={onSave} disabled={saving} className="flex items-center gap-2 rounded-lg bg-green-600 px-6 py-2 text-sm font-semibold text-white hover:bg-green-700 disabled:opacity-50"><Save className="size-4" /> {t("salesReturn.save")}</button>
+          </CreatePermission>
           <button type="button" className="flex items-center gap-2 rounded-lg bg-[#003366] px-6 py-2 text-sm font-semibold text-white hover:bg-[#002855]">{t("salesReturn.more")} <ChevronDown className="size-4" /></button>
           <button type="button" onClick={clearAll} className="flex items-center gap-2 rounded-lg bg-red-600 px-6 py-2 text-sm font-semibold text-white hover:bg-red-700"><Brush className="size-4" /> {t("salesReturn.clear")}</button>
         </div>

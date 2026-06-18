@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { useAuth } from "@/hooks/use-auth";
+import { API_BASE_URL } from "@/config/api";
 
 const currentYear = new Date().getFullYear();
 
@@ -28,7 +29,11 @@ export default function DashboardPage() {
     const companyEmail = company?.email || "\u2014";
     const companyCrNumber = company?.crNumber || "\u2014";
     const companyAddress = company?.address || "\u2014";
-    const companyLogo = company?.logo;
+    const companyLogo = company?.logo
+        ? company.logo.startsWith("/")
+            ? `${API_BASE_URL.replace(/\/+$/, "")}${company.logo}`
+            : company.logo
+        : null;
     return (
         <div className="flex flex-col gap-5">
             {/* ===== 1. Breadcrumb Bar ===== */}

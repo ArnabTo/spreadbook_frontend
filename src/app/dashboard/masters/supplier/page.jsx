@@ -8,6 +8,7 @@ import {
   RefreshCw, ChevronLeft, Pencil, Trash2, ArrowUp,
 } from "lucide-react";
 import { swrFetcher, suppliersKey, deleteSupplier } from "@/services/api";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const currentYear = new Date().getFullYear();
 
@@ -54,9 +55,11 @@ export default function SupplierPage() {
       </div>
 
       <div className="flex justify-end">
+        <CreatePermission module="supplier">
         <Link href="/dashboard/masters/supplier/create" className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700">
           <Plus className="size-4" /> ADD
         </Link>
+        </CreatePermission>
       </div>
 
       <div className="overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5">
@@ -99,8 +102,12 @@ export default function SupplierPage() {
                     <td className="px-3 py-3 text-center">{sup.status === "Active" ? <span className="text-xs font-medium text-green-700">Active</span> : <span className="text-xs font-medium text-red-500">{sup.status || "—"}</span>}</td>
                     <td className="px-3 py-3 text-center">
                       <div className="flex items-center justify-center gap-2">
+                        <UpdatePermission module="supplier">
                         <Link href={`/dashboard/masters/supplier/create?id=${sup.id}`} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"><Pencil className="size-3.5" /></Link>
+                        </UpdatePermission>
+                        <DeletePermission module="supplier">
                         <button onClick={() => handleDelete(sup)} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-red-600"><Trash2 className="size-3.5" /></button>
+                        </DeletePermission>
                       </div>
                     </td>
                   </tr>

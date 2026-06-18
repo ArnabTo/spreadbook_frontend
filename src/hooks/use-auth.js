@@ -31,6 +31,7 @@ function mapBackendUser(backendUser) {
         resellerId: backendUser.resellerId,
         branchAccess: backendUser.branchAccess || [],
         status: backendUser.status,
+        universalLogo: backendUser.universalLogo || null,
     };
 }
 

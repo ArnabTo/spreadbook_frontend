@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { swrFetcher, unitsKey, deleteUnit } from "@/services/api";
 import { UnitDialog } from "@/components/masters/unit-dialog";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const currentYear = new Date().getFullYear();
 
@@ -123,12 +124,14 @@ export default function MeasuringUnitsPage() {
 
       {/* Add Button */}
       <div className="flex justify-end">
+        <CreatePermission module="measuring_unit">
         <button
           onClick={openAdd}
           className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-green-700"
         >
           <Plus className="size-4" /> ADD
         </button>
+        </CreatePermission>
       </div>
 
       {/* Main Table Container */}
@@ -265,18 +268,22 @@ export default function MeasuringUnitsPage() {
                     </td>
                     <td className="px-3 py-3 text-center">
                       <div className="flex items-center justify-center gap-2">
+                        <UpdatePermission module="measuring_unit">
                         <button
                           onClick={() => openEdit(u)}
                           className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"
                         >
                           <Pencil className="size-3.5" />
                         </button>
+                        </UpdatePermission>
+                        <DeletePermission module="measuring_unit">
                         <button
                           onClick={() => handleDelete(u)}
                           className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-red-600"
                         >
                           <Trash2 className="size-3.5" />
                         </button>
+                        </DeletePermission>
                       </div>
                     </td>
                   </tr>

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { navData } from "@/config/nav.config.dashboard";
 import { useSidebar } from "@/hooks/use-sidebar";
 import { useIsMobile } from "@/hooks/use-media-query";
+import { usePermissionStore } from "@/store/permission-store";
 import {
     Search,
     X,
@@ -19,12 +20,52 @@ import {
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
+import { API_BASE_URL } from "@/config/api";
+import Image from "next/image";
 
 function Sidebar() {
     const pathname = usePathname();
     const { isCollapsed, toggleCollapsed, closeMobile, isMobileOpen } = useSidebar();
     const { user, logout } = useAuth();
+    const { permissions } = usePermissionStore();
     const isMobile = useIsMobile();
+
+    const hasModuleAccess = useCallback(
+        (module) => {
+            if (!module) return true;
+            return permissions[module]?.view ?? false;
+        },
+        [permissions]
+    );
+
+    const filteredNavData = useMemo(() => {
+        return navData
+            .map((section) => ({
+                ...section,
+                items: section.items
+                    .filter((item) => {
+                        if (item.children) {
+                            const visibleChildren = item.children.filter((child) => hasModuleAccess(child.module));
+                            return visibleChildren.length > 0;
+                        }
+                        return hasModuleAccess(item.module);
+                    })
+                    .map((item) => {
+                        if (!item.children) return item;
+                        return {
+                            ...item,
+                            children: item.children.filter((child) => hasModuleAccess(child.module)),
+                        };
+                    }),
+            }))
+            .filter((section) => section.items.length > 0);
+    }, [hasModuleAccess]);
+
+    const universalLogoSrc = user?.universalLogo
+        ? user.universalLogo.startsWith("/")
+            ? `${API_BASE_URL.replace(/\/+$/, "")}${user.universalLogo}`
+            : user.universalLogo
+        : null;
     const [isHoverExpanded, setIsHoverExpanded] = useState(false);
 
     const effectiveCollapsed = isCollapsed && !isHoverExpanded;
@@ -76,30 +117,44 @@ function Sidebar() {
                         effectiveCollapsed ? "justify-center" : "gap-3"
                     )}
                 >
-                    {effectiveCollapsed ? (
-                        <div className="bg-white flex size-9 items-center justify-center rounded-lg text-sm font-bold text-white">
-                            S
-                        </div>
+                    {universalLogoSrc ? (
+                        <Image
+                            src={universalLogoSrc}
+                            alt="Logo"
+                            width={effectiveCollapsed ? 32 : 160}
+                            height={40}
+                            unoptimized
+                            className={cn(
+                                "object-contain",
+                                effectiveCollapsed ? "size-8" : "h-10 w-full object-cover"
+                            )}
+                        />
                     ) : (
-                        <>
-                            <div className="bg-white flex size-9 items-center justify-center rounded-lg text-sm font-bold text-white">
+                        effectiveCollapsed ? (
+                            <div className="bg-brand flex size-9 items-center justify-center rounded-lg text-sm font-bold text-white">
                                 S
                             </div>
-                            <span className="text-base font-semibold text-white/90">
-                                Spread Book
-                            </span>
-                            {isMobile && (
-                                <Button
-                                    variant="ghost"
-                                    size="icon-xs"
-                                    className="ml-auto text-white/70 hover:bg-white/10 hover:text-white"
-                                    onClick={closeMobile}
-                                    aria-label="Close menu"
-                                >
-                                    <X className="size-4" />
-                                </Button>
-                            )}
-                        </>
+                        ) : (
+                            <>
+                                <div className="bg-brand flex size-9 items-center justify-center rounded-lg text-sm font-bold text-white">
+                                    S
+                                </div>
+                                <span className="text-base font-semibold text-white/90">
+                                    Spread Book
+                                </span>
+                            </>
+                        )
+                    )}
+                    {isMobile && !effectiveCollapsed && (
+                        <Button
+                            variant="ghost"
+                            size="icon-xs"
+                            className="ml-auto text-white/70 hover:bg-white/10 hover:text-white"
+                            onClick={closeMobile}
+                            aria-label="Close menu"
+                        >
+                            <X className="size-4" />
+                        </Button>
                     )}
                 </div>
 
@@ -121,7 +176,7 @@ function Sidebar() {
                         effectiveCollapsed ? "overflow-visible" : "overflow-y-auto"
                     )}
                 >
-                    {navData.map((section, idx) => (
+                    {filteredNavData.map((section, idx) => (
                         <div key={idx} className="mb-6">
                             {!effectiveCollapsed && section.subheader && (
                                 <p className="mb-2 px-2 text-xs font-medium uppercase tracking-wider text-white/40">

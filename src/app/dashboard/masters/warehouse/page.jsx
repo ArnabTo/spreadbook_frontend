@@ -8,6 +8,7 @@ import {
   ChevronLeft, Pencil, Trash2, ArrowUp, Search, Eraser
 } from "lucide-react";
 import { swrFetcher, warehousesKey, deleteWarehouse } from "@/services/api";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const currentYear = new Date().getFullYear();
 
@@ -56,9 +57,11 @@ export default function WarehousePage() {
       </div>
 
       <div className="flex justify-end">
+        <CreatePermission module="warehouse">
         <Link href="/dashboard/masters/warehouse/create" className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700">
           <Plus className="size-4" />ADD
         </Link>
+        </CreatePermission>
       </div>
 
       <div className="overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5">
@@ -99,8 +102,12 @@ export default function WarehousePage() {
                     <td className="px-3 py-3 text-center text-gray-600">{wh.warehouseType || "—"}</td>
                     <td className="px-3 py-3 text-center">
                       <div className="flex items-center justify-center gap-2">
+                        <UpdatePermission module="warehouse">
                         <Link href={`/dashboard/masters/warehouse/create?id=${wh.id}`} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"><Pencil className="size-3.5" /></Link>
+                        </UpdatePermission>
+                        <DeletePermission module="warehouse">
                         <button onClick={() => handleDelete(wh)} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-red-600"><Trash2 className="size-3.5" /></button>
+                        </DeletePermission>
                       </div>
                     </td>
                   </tr>

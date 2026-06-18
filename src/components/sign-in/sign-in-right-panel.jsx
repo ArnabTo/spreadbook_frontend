@@ -4,10 +4,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Mail, Lock } from "lucide-react";
 import { Button } from "../ui/button";
-import { Logo } from "@/components/ui/logo";
 import { useAuth } from "@/hooks/use-auth";
-
-import SanaLogo from "../../../public/assets/logo/sana_logo.jpeg";
 
 export function SignInRightPanel() {
     const { t } = useTranslation();
@@ -36,10 +33,6 @@ export function SignInRightPanel() {
     return (
         <div className="flex h-full w-full flex-col items-start justify-center ml-28 bg-white">
             <div className="flex w-full max-w-sm flex-col gap-10">
-                <Logo
-                    className="justify-baseline rounded-lg overflow-hidden"
-                    src={SanaLogo} alt="Sana Logo" width={200} height={100} />
-
                 <div className="flex flex-col gap-1">
                     <h1 className="text-3xl font-bold text-gray-900">
                         {t("signIn.title")}

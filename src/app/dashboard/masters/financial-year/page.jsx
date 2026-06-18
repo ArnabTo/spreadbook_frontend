@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { swrFetcher, financialYearsKey, deleteFinancialYear } from "@/services/api";
 import { useTranslation } from "react-i18next";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const currentYear = new Date().getFullYear();
 
@@ -61,9 +62,11 @@ export default function FinancialYearPage() {
       </div>
 
       <div className="flex justify-end">
+        <CreatePermission module="financial_year">
         <Link href="/dashboard/masters/financial-year/create" className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white hover:bg-green-700">
           <Plus className="size-4" />ADD
         </Link>
+        </CreatePermission>
       </div>
 
       <div className="overflow-hidden rounded-xl shadow-sm ring-1 ring-black/5">
@@ -102,8 +105,12 @@ export default function FinancialYearPage() {
                     <td className="px-3 py-3 text-center text-gray-600">{formatDate(fy.created_at)}</td>
                     <td className="px-3 py-3 text-center">
                       <div className="flex items-center justify-center gap-2">
+                        <UpdatePermission module="financial_year">
                         <Link href={`/dashboard/masters/financial-year/create?id=${fy.id}`} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"><Pencil className="size-3.5" /></Link>
+                        </UpdatePermission>
+                        <DeletePermission module="financial_year">
                         <button onClick={() => handleDelete(fy)} className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-red-600"><Trash2 className="size-3.5" /></button>
+                        </DeletePermission>
                       </div>
                     </td>
                   </tr>

@@ -13,6 +13,7 @@ import {
   updateProductService,
   fetchProductServices,
 } from "@/services/api";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 export default function ProductServiceCreatePage() {
   const router = useRouter();
@@ -309,6 +310,7 @@ export default function ProductServiceCreatePage() {
         >
           Cancel
         </Link>
+        <CreatePermission module="product_service">
         <button
           onClick={handleSave}
           disabled={saving}
@@ -316,6 +318,7 @@ export default function ProductServiceCreatePage() {
         >
           {saving ? "Saving..." : isEdit ? "Update" : "Save"}
         </button>
+        </CreatePermission>
       </div>
     </div>
   );

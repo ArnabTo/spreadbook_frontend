@@ -8,6 +8,7 @@ import {
   fetchFinancialYears, createFinancialYear, updateFinancialYear,
 } from "@/services/api";
 import { useTranslation } from "react-i18next";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 export default function FinancialYearCreatePage() {
   const router = useRouter();
@@ -114,9 +115,11 @@ export default function FinancialYearCreatePage() {
         </div>
 
         <div className="flex justify-center gap-4 border-t px-6 py-4">
+          <CreatePermission module="financial_year">
           <button onClick={handleSave} disabled={saving} className="flex items-center gap-2 rounded-lg bg-green-600 px-6 py-2 text-sm font-semibold text-white hover:bg-green-700 disabled:opacity-60">
             {saving ? "Saving..." : isEdit ? t("financialYear.update") : t("financialYear.save")}
           </button>
+          </CreatePermission>
           <Link href="/dashboard/masters/financial-year" className="flex items-center gap-2 rounded-lg bg-red-500 px-6 py-2 text-sm font-semibold text-white hover:bg-red-600">
             {t("financialYear.cancel")}
           </Link>

@@ -13,6 +13,7 @@ import {
   fetchSalesOrderOptions,
 } from "@/services/api";
 import axiosInstance from "@/utils/axios";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const EMPTY_ROW = () => ({
   product: "",
@@ -701,6 +702,7 @@ export default function SalesOrderCreatePage() {
         </div>
 
         <div className="flex items-center justify-center gap-4 border-t px-6 py-4">
+          <CreatePermission module="sales_order">
           <button
             type="button"
             onClick={onSave}
@@ -709,6 +711,7 @@ export default function SalesOrderCreatePage() {
           >
             <Save className="size-4" /> {t("salesOrder.save")}
           </button>
+          </CreatePermission>
           <button
             type="button"
             className="flex items-center gap-2 rounded-lg bg-[#003366] px-6 py-2 text-sm font-semibold text-white hover:bg-[#002855]"

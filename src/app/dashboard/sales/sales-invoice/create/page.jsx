@@ -13,6 +13,7 @@ import {
   fetchSalesInvoiceOptions,
 } from "@/services/api";
 import axiosInstance from "@/utils/axios";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const EMPTY_ROW = () => ({
   product: "",
@@ -496,7 +497,9 @@ export default function SalesInvoiceCreatePage() {
         </div>
 
         <div className="flex items-center justify-center gap-4 border-t px-6 py-4">
+          <CreatePermission module="sales_invoice">
           <button type="button" onClick={onSave} disabled={saving} className="flex items-center gap-2 rounded-lg bg-green-600 px-6 py-2 text-sm font-semibold text-white hover:bg-green-700 disabled:opacity-50"><Save className="size-4" /> {t("salesInvoice.save")}</button>
+          </CreatePermission>
           <button type="button" className="flex items-center gap-2 rounded-lg bg-[#003366] px-6 py-2 text-sm font-semibold text-white hover:bg-[#002855]">{t("salesInvoice.more")} <ChevronDown className="size-4" /></button>
           <button type="button" onClick={clearAll} className="flex items-center gap-2 rounded-lg bg-red-600 px-6 py-2 text-sm font-semibold text-white hover:bg-red-700"><Brush className="size-4" /> {t("salesInvoice.clear")}</button>
         </div>

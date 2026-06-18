@@ -6,6 +6,7 @@ import { RefreshCw, Plus, Pencil, Trash2 } from "lucide-react";
 import { swrFetcher, statesKey, deleteState } from "@/services/api";
 import { StateProvinceDialog } from "@/components/settings/state-province-dialog";
 import { endpoints } from "@/utils/axios";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 export default function StateProvincePage() {
     const [page, setPage] = useState(1);
@@ -62,7 +63,9 @@ export default function StateProvincePage() {
                 <h1 className="text-lg font-bold text-gray-800">States / Provinces</h1>
                 <div className="flex items-center gap-2">
                     <button onClick={() => mutate()} className="rounded-lg border border-gray-300 bg-white p-2 text-gray-600 hover:bg-gray-100"><RefreshCw className="size-4" /></button>
+                    <CreatePermission module="settings">
                     <button onClick={openCreate} className="flex items-center gap-1 rounded-lg bg-[#004080] px-4 py-2 text-sm font-semibold text-white hover:bg-[#003060]"><Plus className="size-4" /> Add New</button>
+                    </CreatePermission>
                 </div>
             </div>
 
@@ -102,8 +105,12 @@ export default function StateProvincePage() {
                                 <td className="px-4 py-3"><span className={`rounded-full px-2 py-0.5 text-xs font-medium ${s.is_active ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"}`}>{s.is_active ? "Active" : "Inactive"}</span></td>
                                 <td className="px-4 py-3 text-center">
                                     <div className="flex items-center justify-center gap-1">
+                                        <UpdatePermission module="settings">
                                         <button onClick={() => openEdit(s)} className="rounded p-1.5 text-blue-600 hover:bg-blue-50"><Pencil className="size-4" /></button>
+                                        </UpdatePermission>
+                                        <DeletePermission module="settings">
                                         <button onClick={() => handleDelete(s.id)} className="rounded p-1.5 text-red-600 hover:bg-red-50"><Trash2 className="size-4" /></button>
+                                        </DeletePermission>
                                     </div>
                                 </td>
                             </tr>

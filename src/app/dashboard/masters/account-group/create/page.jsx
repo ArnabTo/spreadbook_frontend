@@ -11,6 +11,7 @@ import {
   fetchAccountGroupParents,
 } from "@/services/api";
 import { useTranslation } from "react-i18next";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 export default function AccountGroupCreatePage() {
   const router = useRouter();
@@ -115,9 +116,11 @@ export default function AccountGroupCreatePage() {
         </div>
 
         <div className="flex justify-center gap-4 border-t px-6 py-4">
+          <CreatePermission module="account_group">
           <button onClick={handleSave} disabled={saving} className="flex items-center gap-2 rounded-lg bg-green-600 px-6 py-2 text-sm font-semibold text-white hover:bg-green-700 disabled:opacity-60">
             {saving ? "Saving..." : isEdit ? t("accountGroup.update") : t("accountGroup.save")}
           </button>
+          </CreatePermission>
           <Link href="/dashboard/masters/account-group" className="flex items-center gap-2 rounded-lg bg-red-500 px-6 py-2 text-sm font-semibold text-white hover:bg-red-600">
             {t("accountGroup.cancel")}
           </Link>

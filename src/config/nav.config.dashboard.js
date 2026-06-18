@@ -46,7 +46,11 @@ const ICONS = {
 
 const icon = (name) => ICONS[name] || ICONS.dashboard;
 
-export const getNavData = (userPermissions = []) => [
+function module(name) {
+    return name.toLowerCase().replace(/\s+/g, "_");
+}
+
+export const getNavData = () => [
     {
         subheader: "Menu",
         items: [
@@ -54,50 +58,49 @@ export const getNavData = (userPermissions = []) => [
                 title: "Dashboard",
                 path: "/dashboard",
                 icon: icon("dashboard"),
+                module: "dashboard",
             },
         ],
     },
     {
-        // subheader: "Management",
         items: [
             {
                 title: "Masters",
                 path: "/dashboard/masters",
                 icon: icon("category"),
+                module: "masters",
                 children: [
-                    { title: "Category", path: "/dashboard/masters/category" },
-                    { title: "Measuring Units", path: "/dashboard/masters/measuring-units" },
-                    { title: "Product", path: "/dashboard/masters/product",},
-                    // { title: "Product Service", path: "/dashboard/masters/settings", icon: icon("settings") },
-                    { title: "Product Service", path: "/dashboard/masters/product-services" },
-                    { title: "Warehouse", path: "/dashboard/masters/warehouse" },
-                    { title: "Prefix", path: "/dashboard/masters/prefix" },
-                    { title: "Customer", path: "/dashboard/masters/customer" },
-                    { title: "Supplier", path: "/dashboard/masters/supplier" },
-                    { title: "Accounts Group", path: "/dashboard/masters/account-group" },
-                    { title: "Accounts", path: "/dashboard/masters/account" },
-                    { title: "Financial Year", path: "/dashboard/masters/financial-year" },
+                    { title: "Category", path: "/dashboard/masters/category", module: module("Category") },
+                    { title: "Measuring Units", path: "/dashboard/masters/measuring-units", module: module("Measuring Units") },
+                    { title: "Product", path: "/dashboard/masters/product", module: "product" },
+                    { title: "Product Service", path: "/dashboard/masters/product-services", module: module("Product Service") },
+                    { title: "Warehouse", path: "/dashboard/masters/warehouse", module: "warehouse" },
+                    { title: "Prefix", path: "/dashboard/masters/prefix", module: "prefix" },
+                    { title: "Customer", path: "/dashboard/masters/customer", module: "customer" },
+                    { title: "Supplier", path: "/dashboard/masters/supplier", module: "supplier" },
+                    { title: "Accounts Group", path: "/dashboard/masters/account-group", module: module("Account Group") },
+                    { title: "Accounts", path: "/dashboard/masters/account", module: "account" },
+                    { title: "Financial Year", path: "/dashboard/masters/financial-year", module: module("Financial Year") },
                 ],
             },
         ],
     },
     {
-        // subheader: "Management",
         items: [
             {
                 title: "Sales",
                 path: "/dashboard/sales",
                 icon: icon("shopping"),
+                module: "sales",
                 children: [
-                    { title: "Sales Quotation", path: "/dashboard/sales/sales-quotation" },
-                    { title: "Sales Order", path: "/dashboard/sales/sales-order" },
-                    { title: "Delivery Note", path: "/dashboard/sales/delivery-note",},
-                    { title: "Sales Invoice", path: "/dashboard/sales/sales-invoice",},
-                    { title: "Sales Invoice Registry", path: "/dashboard/sales/sales-invoice-registry",},
-                    { title: "Sales Order Registry", path: "/dashboard/sales/sales-order-registry",},
-                    { title: "Proforma Invoice", path: "/dashboard/sales/proforma-invoice",},
-                    { title: "Sales Return", path: "/dashboard/sales/sales-return",},
-
+                    { title: "Sales Quotation", path: "/dashboard/sales/sales-quotation", module: module("Sales Quotation") },
+                    { title: "Sales Order", path: "/dashboard/sales/sales-order", module: module("Sales Order") },
+                    { title: "Delivery Note", path: "/dashboard/sales/delivery-note", module: module("Delivery Note") },
+                    { title: "Sales Invoice", path: "/dashboard/sales/sales-invoice", module: module("Sales Invoice") },
+                    { title: "Sales Invoice Registry", path: "/dashboard/sales/sales-invoice-registry", module: module("Sales Invoice Registry") },
+                    { title: "Sales Order Registry", path: "/dashboard/sales/sales-order-registry", module: module("Sales Order Registry") },
+                    { title: "Proforma Invoice", path: "/dashboard/sales/proforma-invoice", module: module("Proforma Invoice") },
+                    { title: "Sales Return", path: "/dashboard/sales/sales-return", module: module("Sales Return") },
                 ],
             },
         ],
@@ -108,16 +111,26 @@ export const getNavData = (userPermissions = []) => [
                 title: "Settings",
                 path: "/dashboard/settings",
                 icon: icon("settings"),
+                module: "settings",
                 children: [
-                    { title: "Country", path: "/dashboard/settings/country" },
-                    { title: "State/Province", path: "/dashboard/settings/state-province" },
-                    { title: "Bank Account", path: "/dashboard/settings/bank-account" },
-                    { title: "Currency", path: "/dashboard/settings/currency" },
+                    { title: "Country", path: "/dashboard/settings/country", module: "settings" },
+                    { title: "State/Province", path: "/dashboard/settings/state-province", module: "settings" },
+                    { title: "Bank Account", path: "/dashboard/settings/bank-account", module: "settings" },
+                    { title: "Currency", path: "/dashboard/settings/currency", module: "settings" },
                 ],
             },
         ],
     },
-
+    {
+        items: [
+            {
+                title: "Permissions",
+                path: "/dashboard/permission",
+                icon: icon("shield"),
+                module: "permission",
+            },
+        ],
+    },
 ];
 
 export const navData = getNavData();

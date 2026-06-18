@@ -12,6 +12,7 @@ import {
 } from "@/services/api";
 import axiosInstance from "@/utils/axios";
 import AddressInformationSection from "@/components/masters/AddressInformationSection";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 export default function AccountCreatePage() {
   const { t } = useTranslation();
@@ -356,9 +357,11 @@ export default function AccountCreatePage() {
 
         <div className="flex justify-end gap-4 border-t px-6 py-4">
           <Link href="/dashboard/masters/account" className="rounded-lg border border-gray-300 bg-white px-5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100">{t("account.cancel")}</Link>
+          <CreatePermission module="account">
           <button onClick={handleSave} disabled={saving} className="rounded-lg bg-[#004080] px-6 py-2 text-sm font-semibold text-white hover:bg-[#003060] disabled:opacity-60">
             {saving ? t("account.loading") : isEdit ? t("account.update") : t("account.save")}
           </button>
+          </CreatePermission>
         </div>
       </div>
       <button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="fixed bottom-6 right-6 flex size-10 items-center justify-center rounded-lg bg-[#004080] text-white shadow-lg hover:bg-[#003060]"><ArrowUp className="size-5" /></button>

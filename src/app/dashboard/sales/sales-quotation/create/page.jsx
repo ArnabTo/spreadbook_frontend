@@ -13,6 +13,7 @@ import {
   fetchSalesQuotationOptions,
 } from "@/services/api";
 import axiosInstance from "@/utils/axios";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const EMPTY_ROW = () => ({
   product: "",
@@ -835,6 +836,7 @@ export default function SalesQuotationCreatePage() {
 
         {/* Footer Actions */}
         <div className="flex justify-center gap-3 border-t bg-gray-50 px-6 py-4">
+          <CreatePermission module="sales_quotation">
           <button
             type="button"
             onClick={onSave}
@@ -843,6 +845,7 @@ export default function SalesQuotationCreatePage() {
           >
             <Save className="size-4" />{saving ? t("salesQuotation.loading") : (isEdit ? t("salesQuotation.update") : t("salesQuotation.save"))}
           </button>
+          </CreatePermission>
           <button
             type="button"
             className="flex items-center gap-2 rounded-md bg-[#1e3a8a] px-6 py-2 text-sm font-semibold uppercase text-white hover:opacity-90"

@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { swrFetcher, categoriesKey, deleteCategory } from "@/services/api";
 import { CategoryDialog } from "@/components/masters/category-dialog";
+import { CreatePermission, UpdatePermission, DeletePermission } from "@/components/permission/action-permission";
 
 const currentYear = new Date().getFullYear();
 
@@ -125,6 +126,7 @@ export default function CategoryPage() {
 
             {/* Add Button */}
             <div className="flex justify-end">
+                <CreatePermission module="category">
                 <button
                     onClick={openAdd}
                     className="flex items-center gap-2 rounded-lg bg-green-600 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-green-700"
@@ -132,6 +134,7 @@ export default function CategoryPage() {
                     <Plus className="size-4" />
                     ADD
                 </button>
+                </CreatePermission>
             </div>
 
             {/* Main Table Container */}
@@ -282,18 +285,22 @@ export default function CategoryPage() {
                                         </td>
                                         <td className="px-3 py-3 text-center">
                                             <div className="flex items-center justify-center gap-2">
+                                                <UpdatePermission module="category">
                                                 <button
                                                     onClick={() => openEdit(cat)}
                                                     className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-slate-800"
                                                 >
                                                     <Pencil className="size-3.5" />
                                                 </button>
+                                                </UpdatePermission>
+                                                <DeletePermission module="category">
                                                 <button
                                                     onClick={() => handleDelete(cat)}
                                                     className="flex size-7 items-center justify-center rounded bg-slate-700 text-white hover:bg-red-600"
                                                 >
                                                     <Trash2 className="size-3.5" />
                                                 </button>
+                                                </DeletePermission>
                                             </div>
                                         </td>
                                     </tr>
