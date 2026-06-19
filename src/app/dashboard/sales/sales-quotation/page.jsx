@@ -269,22 +269,22 @@ export default function SalesQuotationListPage() {
                               <Trash2 className="size-3.5" />
                             </button>
                           </DeletePermission>
-                          <button className="flex size-7 items-center justify-center rounded bg-blue-600 text-white hover:bg-blue-700" title={t("salesQuotation.actions.print")}>
+                          {/* <button className="flex size-7 items-center justify-center rounded bg-blue-600 text-white hover:bg-blue-700" title={t("salesQuotation.actions.print")}>
                             <Printer className="size-3.5" />
-                          </button>
-                          <UpdatePermission module="sales_quotation">
+                          </button> */}
+                          {/* <UpdatePermission module="sales_quotation">
                             <button className="flex size-7 items-center justify-center rounded bg-blue-500 text-white hover:bg-blue-600" title={t("salesQuotation.actions.duplicate")}>
                               <Copy className="size-3.5" />
                             </button>
-                          </UpdatePermission>
-                          <button className="flex size-7 items-center justify-center rounded bg-blue-400 text-white hover:bg-blue-500" title={t("salesQuotation.actions.print")}>
+                          </UpdatePermission> */}
+                          {/* <button className="flex size-7 items-center justify-center rounded bg-blue-400 text-white hover:bg-blue-500" title={t("salesQuotation.actions.print")}>
                             <Printer className="size-3.5" />
-                          </button>
-                          <UpdatePermission module="sales_quotation">
+                          </button> */}
+                          {/* <UpdatePermission module="sales_quotation">
                             <button className="flex size-7 items-center justify-center rounded bg-red-500 text-white hover:bg-red-600" title={t("salesQuotation.actions.send")}>
                               <Send className="size-3.5" />
                             </button>
-                          </UpdatePermission>
+                          </UpdatePermission> */}
                         </div>
                       </td>
                     </tr>
