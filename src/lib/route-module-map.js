@@ -19,6 +19,7 @@ const ROUTE_MODULE_MAP = [
   { path: "/dashboard/sales/sales-order-registry", module: "sales_order_registry" },
   { path: "/dashboard/sales/proforma-invoice", module: "proforma_invoice" },
   { path: "/dashboard/sales/sales-return", module: "sales_return" },
+  { path: "/dashboard/purchases/purchase-order", module: "purchase_order" },
   { path: "/dashboard/settings/country", module: "settings" },
   { path: "/dashboard/settings/state-province", module: "settings" },
   { path: "/dashboard/settings/bank-account", module: "settings" },

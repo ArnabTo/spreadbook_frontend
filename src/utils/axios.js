@@ -74,6 +74,8 @@ export const endpoints = {
 
   // Purchases
   purchases: "/api/purchase/orders/",
+  purchaseOrders: "/api/purchase/orders/",
+  purchaseOrderOptions: "/api/purchase/orders/options/",
 
   // Customers / Suppliers
   customers: "/api/customers/",

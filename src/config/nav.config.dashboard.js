@@ -19,6 +19,7 @@ import {
     BookOpen,
     Calendar,
     MessageSquare,
+    ShoppingBag,
 } from "lucide-react";
 
 const ICONS = {
@@ -101,6 +102,19 @@ export const getNavData = () => [
                     { title: "Sales Order Registry", path: "/dashboard/sales/sales-order-registry", module: module("Sales Order Registry") },
                     { title: "Proforma Invoice", path: "/dashboard/sales/proforma-invoice", module: module("Proforma Invoice") },
                     { title: "Sales Return", path: "/dashboard/sales/sales-return", module: module("Sales Return") },
+                ],
+            },
+        ],
+    },
+    {
+        items: [
+            {
+                title: "Purchases",
+                path: "/dashboard/purchases",
+                icon: icon("shopping"),
+                module: "purchases",
+                children: [
+                    { title: "Purchase Order", path: "/dashboard/purchases/purchase-order", module: module("Purchase Order") },
                 ],
             },
         ],

@@ -30,6 +30,7 @@ export const MODULES = {
   SALES_INVOICE_REGISTRY: "sales_invoice_registry",
   SALES_ORDER_REGISTRY: "sales_order_registry",
   PROFORMA_INVOICE: "proforma_invoice",
+  PURCHASE_ORDER: "purchase_order",
 };
 
 export const ROLES = {
@@ -114,6 +115,7 @@ export const ROLE_PERMISSIONS = {
     viewOnly(MODULES.SALES_INVOICE_REGISTRY),
     viewOnly(MODULES.SALES_ORDER_REGISTRY),
     viewOnly(MODULES.PROFORMA_INVOICE),
+    viewOnly(MODULES.PURCHASE_ORDER),
     viewOnly(MODULES.PRODUCT),
     viewOnly(MODULES.CUSTOMER),
     viewOnly(MODULES.SUPPLIER),
@@ -139,6 +141,7 @@ export const ROLE_PERMISSIONS = {
     viewCreateUpdate(MODULES.PRODUCT_SERVICE),
     viewOnly(MODULES.CUSTOMER),
     viewOnly(MODULES.SUPPLIER),
+    viewCreateUpdate(MODULES.PURCHASE_ORDER),
     deny(MODULES.SALES_QUOTATION),
     deny(MODULES.SALES_ORDER),
     deny(MODULES.DELIVERY_NOTE),
@@ -173,6 +176,7 @@ export const ROLE_PERMISSIONS = {
     viewOnly(MODULES.SALES_INVOICE_REGISTRY),
     viewOnly(MODULES.SALES_ORDER_REGISTRY),
     viewOnly(MODULES.PROFORMA_INVOICE),
+    viewOnly(MODULES.PURCHASE_ORDER),
     deny(MODULES.PREFIX),
     deny(MODULES.ACCOUNT),
     deny(MODULES.ACCOUNT_GROUP),

@@ -607,6 +607,39 @@ export const salesReturnsKey = (params = {}) => {
   return qs ? `${endpoints.salesReturns}?${qs}` : endpoints.salesReturns;
 };
 
+// ── Purchase Order API ──
+
+export const fetchPurchaseOrders = (params = {}) =>
+  fetcher([endpoints.purchaseOrders, { params }]);
+
+export const fetchPurchaseOrder = (id) =>
+  fetcher(`${endpoints.purchaseOrders}${id}/`);
+
+export const fetchPurchaseOrderOptions = () =>
+  fetcher(endpoints.purchaseOrderOptions);
+
+export const createPurchaseOrder = (formData) =>
+  axiosInstance.post(endpoints.purchaseOrders, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const updatePurchaseOrder = (id, formData) =>
+  axiosInstance.patch(`${endpoints.purchaseOrders}${id}/`, formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  }).then((r) => r.data);
+
+export const deletePurchaseOrder = (id) =>
+  axiosInstance.delete(`${endpoints.purchaseOrders}${id}/`).then((r) => r.data);
+
+export const purchaseOrdersKey = (params = {}) => {
+  const searchParams = new URLSearchParams();
+  Object.entries(params).forEach(([k, v]) => {
+    if (v !== undefined && v !== null && v !== "") searchParams.set(k, v);
+  });
+  const qs = searchParams.toString();
+  return qs ? `${endpoints.purchaseOrders}?${qs}` : endpoints.purchaseOrders;
+};
+
 export const salesOrdersKey = (params = {}) => {
   const searchParams = new URLSearchParams();
   Object.entries(params).forEach(([k, v]) => {
